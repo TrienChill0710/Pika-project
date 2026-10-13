@@ -1,0 +1,27 @@
+CREDITS & THIRD-PARTY LICENSES
+(paste this block into your template's "Start Here" / documentation)
+
+────────────────────────────────────────
+ICONS
+────────────────────────────────────────
+Lucide Icons — https://lucide.dev
+License: ISC License © Lucide Icons and Contributors
+A subset of icons is derived from Feather Icons — https://feathericons.com
+License: MIT License © 2013-present Cole Bemis
+Full license text: see /licenses/LICENSE-lucide-icons.txt
+
+────────────────────────────────────────
+FONTS
+────────────────────────────────────────
+Plus Jakarta Sans — © Tokotype
+License: SIL Open Font License 1.1
+Full text: /licenses/LICENSE-plus-jakarta-sans.txt
+
+Inter — © The Inter Project Authors (Rasmus Andersson)
+License: SIL Open Font License 1.1
+Full text: /licenses/LICENSE-inter.txt
+
+────────────────────────────────────────
+All third-party assets above are used under permissive licenses that allow
+inclusion in this commercial template. Their respective license files are
+bundled in the /licenses/ folder as required.

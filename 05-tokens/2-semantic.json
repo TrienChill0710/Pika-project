@@ -1,0 +1,1061 @@
+{
+  "$description": "Pika — semantic tokens. Roles, never raw values. One mode (Light); Dark is out of scope for v1 but the names are mode-ready, so adding Dark later needs no renaming. Every value aliases a Primitive.",
+  "$collection": "Semantic",
+  "$mode": "Light",
+  "color": {
+    "bg": {
+      "app": {
+        "$type": "color",
+        "$value": "{primitive.gradient.page}"
+      },
+      "app-fallback": {
+        "$type": "color",
+        "$value": "{primitive.color.wash.2}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.0}"
+      },
+      "surface-card": {
+        "$type": "color",
+        "$value": "{primitive.gradient.card}"
+      },
+      "recessed": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-045}"
+      },
+      "ghost": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-05}"
+      },
+      "ghost-strong": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-06}"
+      },
+      "navy": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.900}"
+      },
+      "navy-soft": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.800}"
+      },
+      "navy-subtle": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.100}"
+      },
+      "lime": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.200}"
+      },
+      "lime-subtle": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.50}"
+      },
+      "sky": {
+        "$type": "color",
+        "$value": "{primitive.color.sky.700}"
+      },
+      "hero-ink": {
+        "$type": "color",
+        "$value": "{primitive.gradient.hero-ink}"
+      },
+      "hero-accent": {
+        "$type": "color",
+        "$value": "{primitive.gradient.hero-accent}"
+      },
+      "hero-glow-ink": {
+        "$type": "color",
+        "$value": "{primitive.gradient.glow-ink}"
+      },
+      "hero-glow-accent": {
+        "$type": "color",
+        "$value": "{primitive.gradient.glow-accent}"
+      },
+      "tile-ink": {
+        "$type": "color",
+        "$value": "{primitive.gradient.tile-ink}"
+      },
+      "tile-sky": {
+        "$type": "color",
+        "$value": "{primitive.gradient.tile-sky}"
+      },
+      "glass-bar": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-72}"
+      },
+      "glass-well": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-16}"
+      },
+      "glass-well-light": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-46}"
+      },
+      "glass-inset-ink": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-13}"
+      },
+      "glass-inset-lime": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-80}"
+      },
+      "positive-subtle": {
+        "$type": "color",
+        "$value": "{primitive.color.positive.50}"
+      },
+      "warning-subtle": {
+        "$type": "color",
+        "$value": "{primitive.color.warning.50}"
+      },
+      "danger": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.500}"
+      },
+      "danger-subtle": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.50}"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-80}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.100}"
+      },
+      "skeleton": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.200}"
+      },
+      "skeleton-hi": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.100}"
+      },
+      "track-empty": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-22}"
+      },
+      "device-notch": {
+        "$type": "color",
+        "$value": "{primitive.color.static.black}"
+      }
+    },
+    "content": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.900}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.700}"
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.600}"
+      },
+      "unavailable": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.700}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.500}"
+      },
+      "on-glass": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.800}"
+      },
+      "on-navy": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.0}"
+      },
+      "on-navy-sub": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-78}"
+      },
+      "on-navy-muted": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.300}"
+      },
+      "on-lime": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.900}"
+      },
+      "on-lime-sub": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.800}"
+      },
+      "on-sky": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.0}"
+      },
+      "on-sky-sub": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-90}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.800}"
+      },
+      "accent-on-ink": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.200}"
+      },
+      "positive": {
+        "$type": "color",
+        "$value": "{primitive.color.positive.500}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{primitive.color.warning.500}"
+      },
+      "negative": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.500}"
+      }
+    },
+    "border": {
+      "line": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.600}"
+      },
+      "divider": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-08}"
+      },
+      "selected": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.900}"
+      },
+      "glass": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.ink-08}"
+      },
+      "glass-well": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-22}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.300}"
+      },
+      "negative": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.500}"
+      },
+      "line-on-navy": {
+        "$type": "color",
+        "$value": "{primitive.color.transparent.white-18}"
+      }
+    },
+    "icon": {
+      "primary": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.900}"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.700}"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.600}"
+      },
+      "on-navy": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.0}"
+      },
+      "on-lime": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.900}"
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.800}"
+      },
+      "accent-on-ink": {
+        "$type": "color",
+        "$value": "{primitive.color.lime.200}"
+      },
+      "positive": {
+        "$type": "color",
+        "$value": "{primitive.color.positive.500}"
+      },
+      "negative": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.500}"
+      }
+    },
+    "action": {
+      "primary-bg": {
+        "$type": "color",
+        "$value": "{primitive.gradient.hero-ink}"
+      },
+      "primary-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.0}"
+      },
+      "primary-pressed": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.800}"
+      },
+      "secondary-bg": {
+        "$type": "color",
+        "$value": "{primitive.gradient.hero-accent}"
+      },
+      "secondary-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.900}"
+      },
+      "ghost-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.navy.900}"
+      },
+      "disabled-bg": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.100}"
+      },
+      "disabled-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.neutral.500}"
+      }
+    },
+    "status": {
+      "success-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.positive.500}"
+      },
+      "success-bg": {
+        "$type": "color",
+        "$value": "{primitive.color.positive.50}"
+      },
+      "warning-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.warning.500}"
+      },
+      "warning-bg": {
+        "$type": "color",
+        "$value": "{primitive.color.warning.50}"
+      },
+      "error-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.500}"
+      },
+      "error-bg": {
+        "$type": "color",
+        "$value": "{primitive.color.negative.50}"
+      },
+      "info-fg": {
+        "$type": "color",
+        "$value": "{primitive.color.sky.800}"
+      },
+      "info-bg": {
+        "$type": "color",
+        "$value": "{primitive.color.sky.100}"
+      }
+    }
+  },
+  "spacing": {
+    "rhythm": {
+      "attached": {
+        "$type": "number",
+        "$value": "{primitive.space.6}"
+      },
+      "peer": {
+        "$type": "number",
+        "$value": "{primitive.space.12}"
+      },
+      "group": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      },
+      "section": {
+        "$type": "number",
+        "$value": "{primitive.space.32}"
+      }
+    },
+    "inline": {
+      "xs": {
+        "$type": "number",
+        "$value": "{primitive.space.4}"
+      },
+      "sm": {
+        "$type": "number",
+        "$value": "{primitive.space.8}"
+      },
+      "md": {
+        "$type": "number",
+        "$value": "{primitive.space.12}"
+      },
+      "lg": {
+        "$type": "number",
+        "$value": "{primitive.space.16}"
+      },
+      "xl": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      }
+    },
+    "stack": {
+      "xs": {
+        "$type": "number",
+        "$value": "{primitive.space.4}"
+      },
+      "sm": {
+        "$type": "number",
+        "$value": "{primitive.space.8}"
+      },
+      "md": {
+        "$type": "number",
+        "$value": "{primitive.space.12}"
+      },
+      "lg": {
+        "$type": "number",
+        "$value": "{primitive.space.16}"
+      },
+      "xl": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      },
+      "2xl": {
+        "$type": "number",
+        "$value": "{primitive.space.24}"
+      }
+    },
+    "layout": {
+      "screen-edge": {
+        "$type": "number",
+        "$value": "{primitive.space.18}"
+      },
+      "card-padding": {
+        "$type": "number",
+        "$value": "{primitive.space.16}"
+      },
+      "card-padding-lg": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      },
+      "hero-padding": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      },
+      "hero-padding-top": {
+        "$type": "number",
+        "$value": "{primitive.space.24}"
+      },
+      "sheet-padding": {
+        "$type": "number",
+        "$value": "{primitive.space.20}"
+      },
+      "section-gap": {
+        "$type": "number",
+        "$value": "{primitive.space.32}"
+      },
+      "bar-inset": {
+        "$type": "number",
+        "$value": "{primitive.sizing.14}"
+      }
+    }
+  },
+  "sizing": {
+    "icon": {
+      "xs": {
+        "$type": "number",
+        "$value": "{primitive.sizing.14}"
+      },
+      "sm": {
+        "$type": "number",
+        "$value": "{primitive.sizing.16}"
+      },
+      "md": {
+        "$type": "number",
+        "$value": "{primitive.sizing.20}"
+      },
+      "tab": {
+        "$type": "number",
+        "$value": "{primitive.sizing.22}"
+      },
+      "lg": {
+        "$type": "number",
+        "$value": "{primitive.sizing.24}"
+      }
+    },
+    "avatar": {
+      "sm": {
+        "$type": "number",
+        "$value": "{primitive.sizing.36}"
+      },
+      "md": {
+        "$type": "number",
+        "$value": "{primitive.sizing.44}"
+      },
+      "lg": {
+        "$type": "number",
+        "$value": "{primitive.sizing.56}"
+      }
+    },
+    "control": {
+      "button": {
+        "$type": "number",
+        "$value": "{primitive.sizing.52}"
+      },
+      "button-sm": {
+        "$type": "number",
+        "$value": "{primitive.sizing.40}"
+      },
+      "icon-btn": {
+        "$type": "number",
+        "$value": "{primitive.sizing.44}"
+      },
+      "input": {
+        "$type": "number",
+        "$value": "{primitive.sizing.52}"
+      },
+      "input-area": {
+        "$type": "number",
+        "$value": "{primitive.sizing.66}"
+      },
+      "chip": {
+        "$type": "number",
+        "$value": "{primitive.sizing.30}"
+      },
+      "status-chip": {
+        "$type": "number",
+        "$value": "{primitive.sizing.30}"
+      },
+      "toggle-w": {
+        "$type": "number",
+        "$value": "{primitive.sizing.52}"
+      },
+      "toggle-h": {
+        "$type": "number",
+        "$value": "{primitive.sizing.32}"
+      },
+      "tab-bar": {
+        "$type": "number",
+        "$value": "{primitive.sizing.66}"
+      },
+      "statusbar": {
+        "$type": "number",
+        "$value": "{primitive.sizing.47}"
+      },
+      "glass-well": {
+        "$type": "number",
+        "$value": "{primitive.sizing.36}"
+      },
+      "tab-pill-w": {
+        "$type": "number",
+        "$value": "{primitive.sizing.46}"
+      },
+      "tab-pill-h": {
+        "$type": "number",
+        "$value": "{primitive.sizing.32}"
+      },
+      "date-cell": {
+        "$type": "number",
+        "$value": "{primitive.sizing.66}"
+      },
+      "court-cell": {
+        "$type": "number",
+        "$value": "{primitive.sizing.56}"
+      },
+      "segment": {
+        "$type": "number",
+        "$value": "{primitive.sizing.38}"
+      },
+      "meter": {
+        "$type": "number",
+        "$value": "{primitive.sizing.20}"
+      }
+    },
+    "frame": {
+      "width": {
+        "$type": "number",
+        "$value": "{primitive.sizing.390}"
+      },
+      "height": {
+        "$type": "number",
+        "$value": "{primitive.sizing.844}"
+      },
+      "notch-w": {
+        "$type": "number",
+        "$value": "{primitive.sizing.162}"
+      },
+      "notch-h": {
+        "$type": "number",
+        "$value": "{primitive.sizing.32}"
+      }
+    }
+  },
+  "radius": {
+    "tag": {
+      "$type": "number",
+      "$value": "{primitive.radius.6}"
+    },
+    "cell": {
+      "$type": "number",
+      "$value": "{primitive.radius.8}"
+    },
+    "chip-box": {
+      "$type": "number",
+      "$value": "{primitive.radius.12}"
+    },
+    "input": {
+      "$type": "number",
+      "$value": "{primitive.radius.16}"
+    },
+    "icon-box": {
+      "$type": "number",
+      "$value": "{primitive.radius.16}"
+    },
+    "card": {
+      "$type": "number",
+      "$value": "{primitive.radius.22}"
+    },
+    "card-lg": {
+      "$type": "number",
+      "$value": "{primitive.radius.22}"
+    },
+    "hero": {
+      "$type": "number",
+      "$value": "{primitive.radius.28}"
+    },
+    "sheet": {
+      "$type": "number",
+      "$value": "{primitive.radius.28}"
+    },
+    "screen": {
+      "$type": "number",
+      "$value": "{primitive.radius.34}"
+    },
+    "pill": {
+      "$type": "number",
+      "$value": "{primitive.radius.full}"
+    }
+  },
+  "border": {
+    "width": {
+      "default": {
+        "$type": "number",
+        "$value": "{primitive.borderWidth.1}"
+      },
+      "ring": {
+        "$type": "number",
+        "$value": "{primitive.borderWidth.1-5}"
+      },
+      "strong": {
+        "$type": "number",
+        "$value": "{primitive.borderWidth.2}"
+      }
+    }
+  },
+  "elevation": {
+    "card": {
+      "layer1": {
+        "x": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.0}"
+        },
+        "y": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.2}"
+        },
+        "blur": {
+          "$type": "number",
+          "$value": "{primitive.shadow.blur.10}"
+        },
+        "spread": {
+          "$type": "number",
+          "$value": "{primitive.shadow.spread.0}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{primitive.shadow.color.ink-5}"
+        }
+      }
+    },
+    "hero": {
+      "layer1": {
+        "x": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.0}"
+        },
+        "y": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.12}"
+        },
+        "blur": {
+          "$type": "number",
+          "$value": "{primitive.shadow.blur.30}"
+        },
+        "spread": {
+          "$type": "number",
+          "$value": "{primitive.shadow.spread.0}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{primitive.shadow.color.ink-14}"
+        }
+      }
+    },
+    "hero-accent": {
+      "layer1": {
+        "x": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.0}"
+        },
+        "y": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.12}"
+        },
+        "blur": {
+          "$type": "number",
+          "$value": "{primitive.shadow.blur.30}"
+        },
+        "spread": {
+          "$type": "number",
+          "$value": "{primitive.shadow.spread.0}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{primitive.shadow.color.lime-26}"
+        }
+      }
+    },
+    "bar": {
+      "layer1": {
+        "x": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.0}"
+        },
+        "y": {
+          "$type": "number",
+          "$value": "{primitive.shadow.offset.10}"
+        },
+        "blur": {
+          "$type": "number",
+          "$value": "{primitive.shadow.blur.34}"
+        },
+        "spread": {
+          "$type": "number",
+          "$value": "{primitive.shadow.spread.0}"
+        },
+        "color": {
+          "$type": "color",
+          "$value": "{primitive.shadow.color.ink-14}"
+        }
+      }
+    }
+  },
+  "typography": {
+    "amount": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.52}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.bold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.tight}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    },
+    "hero": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.44}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.bold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.tight}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    },
+    "display": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.32}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.bold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.tight}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    },
+    "heading": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.24}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.bold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.snug}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    },
+    "title": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.20}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.bold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.snug}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    },
+    "body-lg": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.17}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.snug}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "body": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.15}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.regular}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "body-bold": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.15}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "label": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.13}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.medium}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "label-bold": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.13}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "caption": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.12}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.medium}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "micro": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.11}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.medium}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.normal}"
+      }
+    },
+    "microcaps": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.display}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.11}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.normal}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.wide}"
+      }
+    },
+    "statusbar": {
+      "font-family": {
+        "$type": "string",
+        "$value": "{primitive.font.family.text}"
+      },
+      "font-size": {
+        "$type": "number",
+        "$value": "{primitive.font.size.15}"
+      },
+      "font-weight": {
+        "$type": "string",
+        "$value": "{primitive.font.style.semibold}"
+      },
+      "line-height": {
+        "$type": "number",
+        "$value": "{primitive.font.lineHeight.snug}"
+      },
+      "letter-spacing": {
+        "$type": "number",
+        "$value": "{primitive.font.letterSpacing.tight}"
+      }
+    }
+  }
+}

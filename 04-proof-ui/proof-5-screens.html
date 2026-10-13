@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pika — 5 proof screens</title>
+<style>
+/* ============================================================
+   PIKA — PROOF SCREENS · Step 09 (v3 — soft-gradient / glass direction)
+   Palette: Option A (locked) · Font: Inter (locked) · Icons: Lucide (locked)
+   Frame 390 x 844, portrait, light only.
+   Style grammar taken from the wellness reference in 02-assets/moodboard:
+   tinted page wash · saturated gradient hero with stacked edges · frosted
+   inner blocks · glass circle icons · floating glass tab bar + FAB.
+   The GRAMMAR is borrowed; the HUES stay navy + lime.
+   Every value is a token in :root. Step 10 reads this file.
+   ============================================================ */
+
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_400Regular.ttf');font-weight:400;font-display:swap}
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_500Medium.ttf');font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_600SemiBold.ttf');font-weight:600;font-display:swap}
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_700Bold.ttf');font-weight:700;font-display:swap}
+
+:root{
+  /* ---------- primitive ramps (07-palette.md, option A) ---------- */
+  --c-primary-50:#EFF6FF; --c-primary-100:#E5EDF8; --c-primary-200:#C7DBF6;
+  --c-primary-300:#AEC3E1; --c-primary-400:#94AAC8; --c-primary-500:#7A90AF;
+  --c-primary-600:#627895; --c-primary-700:#4A5D78; --c-primary-800:#33435A;
+  --c-primary-900:#0C1E36;
+  --c-secondary-100:#DBF0FB; --c-secondary-700:#2E6F8E; --c-secondary-800:#104861;
+  --c-accent-50:#EEFDCD; --c-accent-100:#E4F4C1; --c-accent-200:#C6F024;
+  --c-accent-300:#AED321; --c-accent-400:#94BA00; --c-accent-500:#7B9F00;
+  --c-accent-600:#648500; --c-accent-700:#4C6900; --c-accent-800:#354D00;
+  --c-neutral-0:#FEFFFF; --c-neutral-50:#F4F5F7; --c-neutral-100:#EBECED;
+  --c-neutral-200:#D7D9DC; --c-neutral-300:#BFC2C4; --c-neutral-400:#A6A8AB;
+  --c-neutral-500:#8C8F91; --c-neutral-600:#747679; --c-neutral-700:#5A5C5E;
+  --c-neutral-800:#404244; --c-neutral-900:#1A2733;
+  --c-success:#157A46; --c-success-tint:#E6F3EC;
+  --c-warning:#8A5200; --c-warning-tint:#FBF1E3;
+  --c-error:#B3332A;
+
+  /* ---------- page wash · the page is never pure white ---------- */
+  --c-wash-1:#F9FDF1; --c-wash-2:#F2F7F4; --c-wash-3:#EDF2F8;
+  --gradient-page:
+    radial-gradient(90% 44% at 86% -4%, rgba(198,240,36,.26) 0%, rgba(198,240,36,0) 64%),
+    radial-gradient(84% 40% at 6% 102%, rgba(46,111,142,.14) 0%, rgba(46,111,142,0) 62%),
+    linear-gradient(176deg, var(--c-wash-1) 0%, var(--c-wash-2) 48%, var(--c-wash-3) 100%);
+
+  /* ---------- hero gradients ---------- */
+  --gradient-hero-accent:linear-gradient(142deg,#DCFB69 0%,#C6F024 44%,#A6D010 100%);
+  --gradient-hero-ink:linear-gradient(150deg,#1B3758 0%,#0C1E36 52%,#061426 100%);
+  --gradient-glow-accent:
+    radial-gradient(118% 86% at 86% 2%, rgba(234,255,150,.46) 0%, rgba(234,255,150,0) 58%),
+    radial-gradient(96% 74% at 4% 102%, rgba(90,130,0,.22) 0%, rgba(90,130,0,0) 62%);
+  --gradient-glow-ink:radial-gradient(120% 88% at 84% 4%, rgba(198,240,36,.20) 0%, rgba(198,240,36,0) 62%);
+  --gradient-card:linear-gradient(170deg, rgba(254,255,255,.94) 0%, rgba(246,250,252,.86) 100%);
+  --gradient-tile-ink:linear-gradient(150deg,#1B3758 0%,#0C1E36 100%);
+  --gradient-tile-sky:linear-gradient(150deg,#2E6F8E 0%,#104861 100%);
+
+  /* ---------- stacked card edges (the layered look) ---------- */
+  --stack-edge-1:var(--c-accent-300);
+  --stack-edge-2:var(--c-primary-300);
+
+  /* ---------- glass ---------- */
+  --glass-bar-bg:rgba(252,254,250,.72);
+  --glass-bar-border:rgba(12,30,54,.08);
+  --glass-blur:saturate(185%) blur(22px);
+  --glass-circle-light:rgba(254,255,255,.16);
+  --glass-circle-light-border:rgba(254,255,255,.22);
+  --glass-circle-dark:rgba(254,255,255,.46);  /* on the LIME tile: a light frosted disc, not a dark stain */
+  --glass-circle-dark-border:rgba(254,255,255,.60);
+  --glass-inset-ink:rgba(254,255,255,.13);
+  --glass-inset-ink-border:rgba(254,255,255,.18);
+  --glass-inset-accent:rgba(12,30,54,.80);  /* .40 measured 2.82:1 for white text on the lightest lime stop */
+  --color-text-on-glass:var(--c-neutral-800);
+
+  /* ---------- semantic colour ---------- */
+  --color-text-primary:var(--c-neutral-900);
+  --color-text-secondary:var(--c-neutral-700);  /* neutral-600 measured 4.05:1 on the darkest wash stop */
+  --color-text-unavailable:var(--c-neutral-700);
+  --color-text-inverse:var(--c-neutral-0);
+  --color-text-inverse-muted:var(--c-primary-300);
+  --color-text-on-accent:var(--c-neutral-900);
+  --color-text-on-accent-muted:var(--c-accent-800);
+  --color-surface-recessed:rgba(12,30,54,.045);   /* a well cut into the page */
+  --color-surface-ghost:rgba(12,30,54,.05);       /* an inert chip or slot */
+  --color-surface-ghost-strong:rgba(12,30,54,.06);
+  --color-track-empty:rgba(254,255,255,.22);      /* the unfilled part of a track on a dark surface */
+  --color-border-divider:rgba(12,30,54,.08);
+  --color-border-control:var(--c-neutral-600);
+  --color-border-selected:var(--c-primary-900);
+  --color-action-primary-bg:var(--c-primary-900);
+  --color-action-primary-fg:var(--c-neutral-0);
+  --color-accent-surface:var(--c-accent-200);
+  --color-accent-surface-soft:var(--c-accent-50);
+  --color-accent-text:var(--c-accent-800);
+  --color-status-success-fg:var(--c-success); --color-status-success-bg:var(--c-success-tint);
+  --color-status-warning-fg:var(--c-warning); --color-status-warning-bg:var(--c-warning-tint);
+
+  /* ---------- tab · one active treatment: dark well, Lucide outline in the logo lime ----------
+     This is where the raw logo lime finally works: #C6F024 is 1.28:1 on a light bar but
+     9.16:1 on the lightest stop of the navy gradient. Lime belongs on dark. */
+  --tab-active-bg:var(--gradient-hero-ink);
+  --tab-active-stroke:var(--c-accent-200);
+  --tab-active-label:var(--color-text-primary);
+
+  /* ---------- space · radius · type · size ---------- */
+  --space-1:2px; --space-2:4px; --space-3:8px; --space-4:12px; --space-5:16px;
+  --space-6:20px; --space-7:24px; --space-8:32px; --space-9:40px;
+  --space-gutter:18px;
+  /* RHYTHM — distance encodes relationship. Four steps, never improvised:
+     attached < peers < related groups < separate sections */
+  --gap-attached:6px;    /* a panel that belongs to the thing above it */
+  --gap-peer:12px;       /* items of equal rank inside one group */
+  --gap-group:20px;      /* two groups that still belong together */
+  --gap-section:32px;    /* unrelated sections */
+  --radius-xs:8px; --radius-sm:12px; --radius-md:16px; --radius-lg:22px;
+  --radius-xl:28px; --radius-2xl:34px; --radius-full:999px;
+  --font-family:Inter,-apple-system,system-ui,sans-serif;
+  --font-size-micro:11px; --font-size-caption:12px; --font-size-label:13px;
+  --font-size-body:15px; --font-size-body-lg:17px; --font-size-title:20px;
+  --font-size-heading:24px; --font-size-display:32px; --font-size-hero:44px; --font-size-amount:52px;
+  --font-weight-regular:400; --font-weight-medium:500;
+  --font-weight-semibold:600; --font-weight-bold:700;
+  --line-height-tight:1.08; --line-height-snug:1.28; --line-height-normal:1.45;
+  --letter-spacing-caps:.07em; --letter-spacing-tight:-.02em;
+  --shadow-card:0 2px 10px rgba(12,30,54,.05);
+  --shadow-hero:0 12px 30px rgba(12,30,54,.14);
+  --shadow-hero-accent:0 12px 30px rgba(140,180,10,.26);
+  --shadow-bar:0 10px 34px rgba(12,30,54,.14);
+  --icon-sm:16px; --icon-md:20px; --icon-lg:24px; --icon-tab:22px;
+  --size-touch:52px; --size-frame-w:390px; --size-frame-h:844px;
+  --size-bar-h:66px; --size-bar-inset:14px;
+  --size-statusbar-h:47px;   /* iPhone 13/14 notched status bar = 47pt */
+  --size-notch-w:162px; --size-notch-h:31px; --color-device-notch:#000000;
+  --font-size-statusbar:15px;
+  --size-fab:56px;
+  --border-width-hairline:1px; --border-width-control:1.5px; --border-width-selected:2px;
+  --progress-to-smash:31%;
+
+  /* NOT PART OF THE PRODUCT — the board the frames sit on */
+  --page-bg:#0E1116; --page-fg:#E8EAED; --page-muted:#9AA0A6; --page-faint:#6E757C;
+}
+
+/* ===== board chrome ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-family);background:var(--page-bg);color:var(--page-fg);padding:var(--space-8)}
+.page-title{font-size:var(--font-size-title);font-weight:var(--font-weight-bold);margin-bottom:var(--space-2)}
+.page-note{font-size:var(--font-size-label);color:var(--page-muted);line-height:var(--line-height-normal);max-width:86ch;margin-bottom:var(--space-8)}
+.rail{display:flex;gap:var(--space-8);align-items:flex-start;overflow-x:auto;padding-bottom:var(--space-7)}
+.frame-wrap{flex:0 0 auto}
+.frame-label{font-size:var(--font-size-caption);color:var(--page-muted);margin-bottom:var(--space-3);font-weight:var(--font-weight-semibold)}
+.frame-why{font-size:var(--font-size-micro);color:var(--page-faint);margin-top:var(--space-3);width:var(--size-frame-w);line-height:var(--line-height-normal)}
+.frame{width:var(--size-frame-w);height:var(--size-frame-h);background-image:var(--gradient-page);
+  border-radius:var(--radius-2xl);overflow:hidden;position:relative;display:flex;flex-direction:column;
+  color:var(--color-text-primary);font-size:var(--font-size-body);isolation:isolate}
+
+/* ===== primitives ===== */
+.icon{width:var(--icon-md);height:var(--icon-md);fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.icon-lg{width:var(--icon-lg);height:var(--icon-lg)}
+.icon-sm{width:var(--icon-sm);height:var(--icon-sm)}
+
+.statusbar{position:relative;z-index:3;flex:0 0 auto;height:var(--size-statusbar-h);
+  display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-6) 0 var(--space-5)}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:var(--size-notch-w);height:var(--size-notch-h);background:var(--color-device-notch);
+  border-radius:0 0 var(--radius-lg) var(--radius-lg)}
+.sb-time{width:62px;text-align:center;font-size:var(--font-size-statusbar);
+  font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-tight);
+  font-variant-numeric:tabular-nums}
+.sb-right{display:flex;align-items:center;gap:6px}
+.sb-glyph{display:block;fill:currentColor}
+.sb-batt-shell{fill:none;stroke:currentColor;stroke-width:1;opacity:.38}
+.sb-batt-cap{fill:currentColor;opacity:.4}
+.sb-batt-fill{fill:currentColor}
+
+.scroll{flex:1 1 auto;overflow:hidden;padding:0 var(--space-gutter) calc(var(--size-bar-h) + var(--space-8))}
+.scroll-nobar{padding-bottom:var(--space-6)}
+.g-attached>*+*{margin-top:var(--gap-attached)}
+.g-peer>*+*{margin-top:var(--gap-peer)}
+.g-group>*+*{margin-top:var(--gap-group)}
+.g-section>*+*{margin-top:var(--gap-section)}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;
+  margin:0 0 var(--gap-peer)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:var(--font-size-micro);font-weight:var(--font-weight-semibold);
+  letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;color:var(--color-text-secondary)}
+.meta{font-size:var(--font-size-label);color:var(--color-text-secondary);line-height:var(--line-height-normal)}
+.section-title{font-size:var(--font-size-body-lg);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-tight)}
+
+/* glass circle that holds an icon, as in the reference tiles */
+.gcircle{width:36px;height:36px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;
+  background:var(--glass-circle-light);border:var(--border-width-hairline) solid var(--glass-circle-light-border);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);flex:0 0 auto}
+.gcircle-dark{background:var(--glass-circle-dark);border-color:var(--glass-circle-dark-border)}
+
+.card{background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  border-radius:var(--radius-lg);padding:var(--space-5);box-shadow:var(--shadow-card)}
+
+/* the layered hero: two edges peek above the card */
+.hero-stack{position:relative;padding-top:var(--space-5)}
+.hero-stack-section{margin-bottom:var(--gap-section)}
+.hero-stack::before,.hero-stack::after{content:"";position:absolute;left:14px;right:14px;height:22px;
+  border-radius:var(--radius-xl) var(--radius-xl) 0 0;z-index:0}
+.hero-stack::before{top:0;background:var(--stack-edge-1)}
+.hero-stack::after{top:7px;left:8px;right:8px;background:var(--stack-edge-2)}
+.hero{position:relative;z-index:1;border-radius:var(--radius-xl);padding:var(--space-7) var(--space-6) var(--space-6)}
+.hero-ink{background-image:var(--gradient-glow-ink),var(--gradient-hero-ink);color:var(--color-text-inverse);
+  box-shadow:var(--shadow-hero)}
+.hero-accent{background-image:var(--gradient-glow-accent),var(--gradient-hero-accent);color:var(--color-text-on-accent);
+  box-shadow:var(--shadow-hero-accent)}
+.hero-eyebrow{font-size:var(--font-size-micro);font-weight:var(--font-weight-semibold);
+  letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;opacity:.72}
+.hero-number{display:block;margin-top:var(--space-4);font-size:var(--font-size-hero);font-weight:var(--font-weight-bold);
+  letter-spacing:var(--letter-spacing-tight);line-height:var(--line-height-tight)}
+.hero-title{display:block;margin-top:var(--space-5);font-size:var(--font-size-heading);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight)}
+.hero-sub{display:block;font-size:var(--font-size-label);opacity:.78;margin-top:var(--space-3)}
+.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);height:30px;padding:0 var(--space-4);
+  border-radius:var(--radius-full);font-size:var(--font-size-caption);font-weight:var(--font-weight-semibold);
+  background:var(--glass-inset-ink);border:var(--border-width-hairline) solid var(--glass-inset-ink-border);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero-badge-dark{background:var(--glass-inset-accent);border-color:transparent;color:var(--color-text-inverse)}
+/* frosted block inside a hero, like the Aura quote */
+.frosted .hero-sub{margin-top:0}
+.frosted-col .track-labels .is-current{opacity:1;font-weight:var(--font-weight-bold)}
+.frosted{margin-top:var(--space-6);padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);
+  background:var(--glass-inset-ink);border:var(--border-width-hairline) solid var(--glass-inset-ink-border);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;gap:var(--space-4)}
+.frosted-dark{background:var(--glass-inset-accent);border-color:transparent;color:var(--color-text-inverse)}
+/* a frosted block that stacks instead of sitting in one row */
+.frosted-col{display:block}
+.frosted-lead{display:flex;align-items:center;gap:var(--space-4);min-width:0}
+.gcircle-onink{background:var(--glass-circle-light);border-color:var(--glass-circle-light-border);
+  width:30px;height:30px}
+.track-line{height:5px;border-radius:var(--radius-full);background:var(--color-track-empty);margin-top:var(--space-4)}
+.track-fill{height:100%;border-radius:var(--radius-full);background:var(--color-accent-surface)}
+.fill-to-smash{width:var(--progress-to-smash)}
+/* an hours meter, not ten blocks: used hours are solid, remaining ones are the
+   same shape at low opacity so the whole pack is readable as one quantity */
+.meter{display:flex;gap:4px;margin-top:var(--space-6)}
+.tick{flex:1;height:18px;border-radius:var(--radius-xs);background:currentColor;opacity:.16}
+.tick.is-on{opacity:.92}
+.tick.is-last-used{opacity:.92}
+.meter-note{display:flex;align-items:baseline;justify-content:space-between;margin-top:var(--space-3);
+  font-size:var(--font-size-micro);font-weight:var(--font-weight-semibold);
+  letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;opacity:.6}
+
+/* decorative court motif — geometry, never the logo */
+.hero-amount{font-size:var(--font-size-amount)}
+.hero-caption{margin-top:var(--space-6);display:flex;align-items:center;gap:var(--space-4);
+  padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);
+  background:var(--glass-inset-ink);border:var(--border-width-hairline) solid var(--glass-inset-ink-border);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hero-caption-text{font-size:var(--font-size-body);font-weight:var(--font-weight-semibold);
+  color:var(--color-accent-surface)}
+.hero-caption-text-plain{color:var(--color-text-inverse)}
+.hero-caption-link{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.hero-motif{position:absolute;pointer-events:none;right:-34px;top:38px;width:216px;height:auto;
+  opacity:.13;stroke:currentColor;fill:none;stroke-width:5;transform:rotate(-8deg)}
+.hero{overflow:hidden}
+
+/* the big number carries its unit at a quieter size */
+.unit{font-size:var(--font-size-heading);font-weight:var(--font-weight-semibold);
+  letter-spacing:0;margin-left:var(--space-2);opacity:.66}
+
+/* two colour tiles side by side */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.tile{border-radius:var(--radius-lg);padding:var(--space-5);min-height:140px;display:flex;flex-direction:column;
+  justify-content:space-between;gap:var(--space-6);color:var(--color-text-inverse);box-shadow:var(--shadow-card)}
+.tile-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3)}
+.tile-meta{font-size:var(--font-size-micro);font-weight:var(--font-weight-semibold);
+  letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;opacity:.72;padding-top:var(--space-3)}  /* .62 measured 4.18:1 on the lightest lime stop */
+.tile-ink{background-image:var(--gradient-tile-ink)}
+.tile-sky{background-image:var(--gradient-tile-sky)}
+.tile-accent{background-image:var(--gradient-hero-accent);color:var(--color-text-on-accent)}
+.tile-value-date{font-size:var(--font-size-heading)}
+.tile-value-sm{display:block;font-size:var(--font-size-body-lg);font-weight:var(--font-weight-bold);line-height:var(--line-height-snug);margin-top:var(--space-2)}
+.tile-label{display:block;font-size:var(--font-size-label);font-weight:var(--font-weight-medium);opacity:.86}
+.tile-value{display:block;margin-top:var(--space-2);font-size:var(--font-size-display);white-space:nowrap;font-weight:var(--font-weight-bold);
+  letter-spacing:var(--letter-spacing-tight);line-height:var(--line-height-tight);margin-top:var(--space-2)}
+
+/* supporting facts — deliberately quiet: they qualify the amount, they do not compete with it */
+.factstrip{display:flex;background-image:var(--gradient-card);
+  border:var(--border-width-hairline) solid var(--color-border-divider);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card);overflow:hidden}
+.fact{flex:1;display:flex;align-items:center;gap:var(--space-4);padding:var(--space-5)}
+.fact+.fact{border-left:var(--border-width-hairline) solid var(--color-border-divider)}
+.fact-ico{width:34px;height:34px;border-radius:var(--radius-full);display:flex;align-items:center;
+  justify-content:center;flex:0 0 auto;background:var(--color-accent-surface-soft);color:var(--color-accent-text)}
+.fact-ico-cool{background:var(--c-secondary-100);color:var(--c-secondary-800)}
+.fact-label{display:block;font-size:var(--font-size-caption);color:var(--color-text-secondary)}
+.fact-value{display:block;margin-top:var(--space-1);font-size:var(--font-size-body);
+  font-weight:var(--font-weight-semibold);white-space:nowrap}
+.fact-tag{margin-left:auto;font-size:9px;font-weight:var(--font-weight-bold);
+  letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;color:var(--color-text-secondary);
+  flex:0 0 auto}
+
+/* chip with a trailing circle, like Low / Good / Great */
+.chiprow{display:flex;gap:var(--space-3)}
+.chipc{flex:1;display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);
+  padding:var(--space-3) var(--space-3) var(--space-3) var(--space-5);border-radius:var(--radius-full);
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  font-size:var(--font-size-body);font-weight:var(--font-weight-semibold);box-shadow:var(--shadow-card)}
+.chipc-sub{display:block;font-size:var(--font-size-caption);font-weight:var(--font-weight-medium);color:var(--color-text-secondary)}
+.chipc-dot{width:30px;height:30px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;
+  background:var(--color-surface-sunken,var(--c-neutral-100));color:var(--color-text-secondary);flex:0 0 auto}
+.chipc.is-cheap{border-color:var(--c-accent-300);border-width:var(--border-width-control)}
+.chipc.is-cheap .chipc-sub{color:var(--color-accent-text);font-weight:var(--font-weight-bold)}
+.chipc.is-cheap .chipc-dot{background:var(--color-accent-surface-soft);color:var(--color-accent-text)}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:var(--space-2);height:28px;padding:0 var(--space-4);
+  border-radius:var(--radius-full);font-size:var(--font-size-caption);font-weight:var(--font-weight-semibold)}
+.chip-success{background:var(--color-status-success-bg);color:var(--color-status-success-fg)}
+.chip-warning{background:var(--color-status-warning-bg);color:var(--color-status-warning-fg)}
+.chip-neutral{background:var(--c-neutral-100);color:var(--color-text-secondary)}
+
+.btn{width:100%;height:var(--size-touch);border:0;border-radius:var(--radius-full);font-family:inherit;
+  font-size:var(--font-size-body-lg);font-weight:var(--font-weight-semibold);display:flex;align-items:center;
+  justify-content:center;gap:var(--space-3);cursor:default}
+.btn-primary{background-image:var(--gradient-hero-ink);color:var(--color-action-primary-fg);box-shadow:var(--shadow-hero)}
+.btn-secondary{background-image:var(--gradient-hero-accent);color:var(--color-text-on-accent);box-shadow:var(--shadow-hero-accent)}
+.btn-ghost{background:transparent;color:var(--color-action-primary-bg);
+  border:var(--border-width-control) solid var(--color-action-primary-bg)}
+
+/* floating glass tab bar + FAB */
+.tabbar{position:absolute;left:var(--size-bar-inset);right:var(--size-bar-inset);bottom:var(--size-bar-inset);
+  height:var(--size-bar-h);display:flex;align-items:center;justify-content:space-around;
+  border-radius:var(--radius-full);background:var(--glass-bar-bg);
+  border:var(--border-width-hairline) solid var(--glass-bar-border);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:var(--shadow-bar)}
+.tabbar-wide{width:calc(100% - var(--size-bar-inset)*2)}
+.fab{position:absolute;right:var(--size-bar-inset);bottom:var(--size-bar-inset);
+  width:var(--size-fab);height:var(--size-fab);border-radius:var(--radius-full);
+  background-image:var(--gradient-hero-accent);color:var(--color-text-on-accent);
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-hero-accent)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:var(--space-1);
+  color:var(--color-text-on-glass);font-size:9px;font-weight:var(--font-weight-medium)}
+.tab .icon{width:var(--icon-tab);height:var(--icon-tab)}
+.tab-ico{width:46px;height:32px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center}
+.tab.is-active{color:var(--color-text-primary);font-weight:var(--font-weight-semibold)}
+.tab.is-active{color:var(--tab-active-label)}
+.tab.is-active .tab-ico{background-image:var(--tab-active-bg);color:var(--tab-active-stroke);
+  box-shadow:var(--shadow-card)}
+.tab.is-active .tab-ico .icon{fill:none;stroke:currentColor;stroke-width:2}
+
+/* ===== S07 ===== */
+.home-head{display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) 0 var(--gap-section)}
+.home-id{display:flex;align-items:center;gap:var(--space-4)}
+.avatar{width:44px;height:44px;border-radius:var(--radius-full);background-image:var(--gradient-tile-ink);
+  color:var(--color-text-inverse);display:flex;align-items:center;justify-content:center;
+  font-size:var(--font-size-body);font-weight:var(--font-weight-semibold)}
+.logo-img{height:20px;width:auto;display:block;margin-bottom:var(--space-1)}
+.greeting{display:block;font-size:var(--font-size-caption);color:var(--color-text-secondary)}
+.bell{position:relative;color:var(--color-text-primary)}
+.bell-dot{position:absolute;top:-1px;right:-1px;width:9px;height:9px;border-radius:var(--radius-full);
+  background:var(--color-accent-surface);border:var(--border-width-control) solid var(--c-wash-1)}
+.venue-strip{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4);
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.venue-thumb{width:46px;height:46px;border-radius:var(--radius-sm);background:var(--c-neutral-100);
+  display:flex;align-items:center;justify-content:center;color:var(--color-text-secondary);
+  font-size:9px;letter-spacing:var(--letter-spacing-caps);text-transform:uppercase;flex:0 0 auto}
+.grow{flex:1 1 auto;min-width:0}
+.nav-title{display:block;font-size:var(--font-size-body);font-weight:var(--font-weight-semibold)}
+.nav-meta{display:block;font-size:var(--font-size-caption);color:var(--color-text-secondary);margin-top:var(--space-1)}
+.from-price{font-size:var(--font-size-label);font-weight:var(--font-weight-bold);color:var(--color-accent-text)}
+
+/* ===== S12 ===== */
+.appbar{display:flex;align-items:center;justify-content:space-between;padding:var(--space-2) var(--space-gutter) var(--space-5)}
+.appbar-tight{padding-bottom:var(--gap-peer)}
+.appbar-venue{display:flex;align-items:center;gap:var(--space-2);font-size:var(--font-size-title);
+  font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight)}
+.datestrip{display:flex;gap:var(--gap-peer);padding:0 var(--space-gutter) var(--gap-peer);overflow:hidden}
+.date{flex:0 0 auto;width:66px;padding:var(--space-4) 0;border-radius:var(--radius-md);text-align:center;
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider)}
+.date-dow{display:block;font-size:var(--font-size-micro);color:var(--color-text-secondary);font-weight:var(--font-weight-medium)}
+.date-num{display:block;font-size:var(--font-size-body-lg);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}
+.date-from{display:block;font-size:9px;color:var(--color-accent-text);font-weight:var(--font-weight-bold);margin-top:var(--space-1)}
+.date.is-selected{background-image:var(--gradient-hero-ink);border-color:transparent;box-shadow:var(--shadow-hero)}
+.date.is-selected .date-dow{color:var(--color-text-inverse-muted)}
+.date.is-selected .date-num{color:var(--color-text-inverse)}
+.date.is-selected .date-from{color:var(--color-accent-surface)}
+.date.is-locked{opacity:.5}
+.segment{display:flex;gap:var(--space-2);margin:0 var(--space-gutter) var(--gap-section);padding:var(--space-1);
+  background:var(--color-surface-ghost);border-radius:var(--radius-full)}
+.segment-item{flex:1;height:38px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-full);
+  font-size:var(--font-size-label);font-weight:var(--font-weight-medium);color:var(--color-text-secondary)}
+.segment-item.is-active{background-image:var(--gradient-card);color:var(--color-text-primary);
+  font-weight:var(--font-weight-semibold);box-shadow:var(--shadow-card)}
+.slotlist{padding:0 var(--space-gutter)}
+.slot{display:flex;align-items:center;justify-content:space-between;padding:var(--space-5);
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.slot-time{display:block;font-size:var(--font-size-body-lg);font-weight:var(--font-weight-bold)}
+.slot-left{display:block;font-size:var(--font-size-caption);color:var(--color-text-secondary);margin-top:var(--space-1)}
+.slot-price{font-size:var(--font-size-body-lg);font-weight:var(--font-weight-bold)}
+.slot.is-selected{background-image:var(--gradient-hero-ink);border-color:transparent;box-shadow:var(--shadow-hero);
+  color:var(--color-text-inverse)}
+.slot.is-selected .slot-left{color:var(--color-text-inverse-muted)}
+.slot.is-selected .slot-price{color:var(--color-accent-surface)}
+.slot.is-full{background-image:none;background-color:var(--color-surface-ghost);border-color:transparent;box-shadow:none}
+.slot.is-full .slot-time,.slot.is-full .slot-price{color:var(--color-text-unavailable)}
+.courts{padding:var(--space-5);border-radius:var(--radius-lg);background:var(--color-surface-recessed)}
+.courts-label{font-size:var(--font-size-label);font-weight:var(--font-weight-semibold);margin-bottom:var(--space-4)}
+.court-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3)}
+.court{height:56px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--color-border-control);
+  background-image:var(--gradient-card);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-1)}
+.court-name{font-size:var(--font-size-body);font-weight:var(--font-weight-bold)}
+.court-state{font-size:9px;color:var(--color-text-unavailable);text-transform:uppercase;letter-spacing:var(--letter-spacing-caps)}
+.court.is-selected{background-image:var(--gradient-hero-accent);border-color:transparent;box-shadow:var(--shadow-hero-accent)}
+.court.is-taken{background-image:none;background-color:var(--color-surface-ghost-strong);border-color:transparent}
+.bookbar{position:absolute;left:var(--size-bar-inset);right:var(--size-bar-inset);bottom:var(--size-bar-inset);
+  padding:var(--space-4) var(--space-5) var(--space-5);border-radius:var(--radius-xl);
+  background:var(--glass-bar-bg);border:var(--border-width-hairline) solid var(--glass-bar-border);
+  backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:var(--shadow-bar)}
+.bookbar-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)}
+.bookbar-sel{font-size:var(--font-size-label);color:var(--color-text-on-glass)}
+.bookbar-total{font-size:var(--font-size-title);font-weight:var(--font-weight-bold)}
+
+/* ===== S14 ===== */
+.confirm-wrap{padding:var(--space-6) 0 0;text-align:center}
+.confirm-mark{width:64px;height:64px;border-radius:var(--radius-full);background-image:var(--gradient-hero-accent);
+  color:var(--color-text-on-accent);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-5);
+  box-shadow:var(--shadow-hero-accent)}
+.confirm-mark .icon{width:30px;height:30px}
+.confirm-title{display:block;margin-top:var(--space-5);font-size:var(--font-size-heading);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight)}
+.confirm-sub{display:block;font-size:var(--font-size-label);color:var(--color-text-secondary);margin-top:var(--space-3)}
+.summary{text-align:left}
+.summary-row{display:flex;align-items:flex-start;gap:var(--space-4);padding-bottom:var(--space-5)}
+.summary-label{display:block;font-size:var(--font-size-caption);color:var(--color-text-secondary)}
+.summary-value{display:block;margin-top:var(--space-2);font-size:var(--font-size-body);font-weight:var(--font-weight-semibold)}
+.divider{height:var(--border-width-hairline);background:var(--color-border-divider)}
+.policy{margin-top:var(--space-5);font-size:var(--font-size-label);color:var(--color-text-secondary);line-height:var(--line-height-normal)}
+.policy strong{color:var(--color-text-primary);font-weight:var(--font-weight-semibold)}
+
+/* ===== S19 ===== */
+.tabs{display:flex;gap:var(--space-7);padding:0 var(--space-gutter);margin-bottom:var(--gap-section)}
+.tab-item{padding-bottom:var(--space-4);font-size:var(--font-size-body);font-weight:var(--font-weight-medium);
+  color:var(--color-text-secondary);border-bottom:var(--border-width-selected) solid transparent}
+.tab-item.is-active{color:var(--color-text-primary);font-weight:var(--font-weight-bold);
+  border-bottom-color:var(--color-text-primary)}
+.booking{display:flex;gap:var(--space-5);padding:var(--space-5);border-radius:var(--radius-lg);
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  box-shadow:var(--shadow-card)}
+.datebox{width:54px;height:58px;border-radius:var(--radius-sm);background:var(--color-surface-ghost);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 auto}
+.datebox-accent{background-image:var(--gradient-hero-accent)}
+.datebox-dow{display:block;font-size:var(--font-size-micro);color:var(--color-text-secondary);font-weight:var(--font-weight-semibold);
+  text-transform:uppercase;letter-spacing:var(--letter-spacing-caps)}
+.datebox-accent .datebox-dow{color:var(--color-text-on-accent-muted)}
+.datebox-num{display:block;font-size:var(--font-size-body-lg);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight)}
+.booking-title{display:block;font-size:var(--font-size-body);font-weight:var(--font-weight-semibold)}
+.booking-chips{display:flex;gap:var(--space-2);margin-top:var(--space-3);flex-wrap:wrap}
+.series-row{display:flex;align-items:center;gap:var(--space-3);margin-top:var(--space-3);
+  font-size:var(--font-size-caption);color:var(--color-text-secondary)}
+.list-end{margin-top:var(--gap-section);padding:0 var(--space-6);text-align:center;font-size:var(--font-size-label);
+  color:var(--color-text-secondary);line-height:var(--line-height-normal)}
+
+/* ===== S27 ===== */
+.track-labels{display:flex;justify-content:space-between;margin-top:var(--space-3);
+  font-size:var(--font-size-micro);font-weight:var(--font-weight-medium);color:var(--color-text-inverse);opacity:.82}
+.track-labels .is-current{opacity:1;font-weight:var(--font-weight-bold)}
+.nav-row{display:flex;align-items:center;gap:var(--space-5);padding:var(--space-5);
+  background-image:var(--gradient-card);border:var(--border-width-hairline) solid var(--color-border-divider);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.nav-icon{width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-surface-ghost);
+  display:flex;align-items:center;justify-content:center;color:var(--color-text-primary);flex:0 0 auto}
+.nav-chevron{color:var(--color-text-secondary)}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Pika — five proof screens · v3</h1>
+<p class="page-note">Style grammar taken from the wellness reference: a page that is never pure white, a saturated gradient hero with stacked edges peeking above it, frosted blocks inside heroes, glass circles holding icons, colour tiles in pairs, and a floating glass tab bar with a separate action button. The grammar is borrowed; the hues stay navy and lime. Frame 390 × 844, light only. Every value is a token in <code>:root</code>.</p>
+
+<div class="rail">
+
+<!-- ===== S07 ===== -->
+<div class="frame-wrap">
+  <div class="frame-label">S07 · Home</div>
+  <div class="frame">
+    <div class="statusbar">
+      <span class="sb-time num">9:41</span>
+      <span class="notch"></span>
+      <span class="sb-right">
+        <svg class="sb-glyph" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0.5" width="3" height="11.5" rx="1"/></svg>
+        <svg class="sb-glyph" width="17" height="12" viewBox="0 0 17 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1.1 4.1a11 11 0 0 1 14.8 0"/><path d="M3.9 6.9a7 7 0 0 1 9.2 0"/><path d="M6.7 9.7a3 3 0 0 1 3.6 0"/></svg>
+        <svg class="sb-glyph" width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect class="sb-batt-shell" x="0.5" y="0.5" width="22" height="12" rx="3.8"/><path class="sb-batt-cap" d="M24.3 4.6c1 .4 1 3.4 0 3.8z"/><rect class="sb-batt-fill" x="2" y="2" width="18.5" height="9" rx="2.4"/></svg>
+      </span>
+    </div>
+    <div class="scroll">
+      <div class="home-head">
+        <div class="home-id">
+          <span class="avatar">MT</span>
+          <span>
+            <img class="logo-img" src="../02-assets/logo/01-pika-logo.png" alt="Pika">
+            <span class="greeting">Good evening, Minh</span>
+          </span>
+        </div>
+        <span class="bell"><svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><span class="bell-dot"></span></span>
+      </div>
+
+      <div class="g-section">
+
+        <!-- GROUP: your next booking — the card and the action on it belong together -->
+        <div class="g-peer">
+          <div class="hero-stack">
+            <div class="hero hero-ink">
+              <svg class="hero-motif" viewBox="0 0 440 200" aria-hidden="true">
+                <rect x="3" y="3" width="434" height="194" rx="4"/>
+                <path d="M220 3v194"/><path d="M150 3v194"/><path d="M290 3v194"/>
+                <path d="M3 100h147"/><path d="M290 100h147"/>
+              </svg>
+              <div class="row">
+                <span class="hero-eyebrow">Next booking</span>
+                <span class="hero-badge">in 2 days</span>
+              </div>
+              <span class="hero-title">Court 4 · 19:00</span>
+              <span class="hero-sub">Tue 13 Oct · Pika District 7</span>
+              <div class="hero-caption hero-caption-link">
+                <span class="frosted-lead">
+                  <span class="gcircle gcircle-onink"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+                  <span class="hero-caption-text hero-caption-text-plain num">$36.00 at the counter</span>
+                </span>
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary">
+            <svg class="icon" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+            Book again · Tue 19:00
+          </button>
+        </div>
+
+        <!-- SUPPORTING: account status — informative, never competing with the booking -->
+        <div class="factstrip">
+          <div class="fact">
+            <span class="fact-ico"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>
+            <span><span class="fact-label">Points</span><span class="fact-value num">1,284</span></span>
+            <span class="fact-tag">Volley</span>
+          </div>
+          <div class="fact">
+            <span class="fact-ico fact-ico-cool"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span>
+            <span><span class="fact-label">Hours left</span><span class="fact-value num">8.0 h</span></span>
+          </div>
+        </div>
+
+        <!-- SECTION: tonight — the venue, then its free slots -->
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">Tonight at your venue</span>
+            <span class="meta">See all</span>
+          </div>
+          <div class="g-peer">
+            <div class="venue-strip">
+              <span class="venue-thumb">Photo</span>
+              <span class="grow"><span class="nav-title">Pika District 7</span><span class="nav-meta">Your home venue · 2.4 km</span></span>
+              <span class="from-price num">from $18</span>
+            </div>
+            <div class="chiprow">
+              <span class="chipc"><span>19:00<span class="chipc-sub num">$36</span></span><span class="chipc-dot"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span></span>
+              <span class="chipc is-cheap"><span>21:00<span class="chipc-sub num">$18 off-peak</span></span><span class="chipc-dot"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <nav class="tabbar">
+      <span class="tab tab-home is-active"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Home</span>
+      <span class="tab tab-book"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>Book</span>
+      <span class="tab tab-bookings"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>Bookings</span>
+      <span class="tab tab-membership"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>Rewards</span>
+      <span class="tab tab-profile"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Profile</span>
+    </nav>
+  </div>
+  <p class="frame-why">Hero with stacked edges and a frosted row carrying the amount due. Two colour tiles replace the quiet points line. Floating glass bar + lime action button.</p>
+</div>
+
+<!-- ===== S12 ===== -->
+<div class="frame-wrap">
+  <div class="frame-label">S12 · Court availability ★</div>
+  <div class="frame">
+    <div class="statusbar">
+      <span class="sb-time num">9:41</span>
+      <span class="notch"></span>
+      <span class="sb-right">
+        <svg class="sb-glyph" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0.5" width="3" height="11.5" rx="1"/></svg>
+        <svg class="sb-glyph" width="17" height="12" viewBox="0 0 17 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1.1 4.1a11 11 0 0 1 14.8 0"/><path d="M3.9 6.9a7 7 0 0 1 9.2 0"/><path d="M6.7 9.7a3 3 0 0 1 3.6 0"/></svg>
+        <svg class="sb-glyph" width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect class="sb-batt-shell" x="0.5" y="0.5" width="22" height="12" rx="3.8"/><path class="sb-batt-cap" d="M24.3 4.6c1 .4 1 3.4 0 3.8z"/><rect class="sb-batt-fill" x="2" y="2" width="18.5" height="9" rx="2.4"/></svg>
+      </span>
+    </div>
+    <div class="appbar">
+      <span class="appbar-venue">Pika District 7 <svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
+      <span class="gcircle gcircle-dark"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+    </div>
+    <div class="datestrip">
+      <span class="date"><span class="date-dow">Sat</span><span class="date-num num">10</span><span class="date-from num">from $18</span></span>
+      <span class="date is-selected"><span class="date-dow">Sun</span><span class="date-num num">11</span><span class="date-from num">from $18</span></span>
+      <span class="date"><span class="date-dow">Mon</span><span class="date-num num">12</span><span class="date-from num">from $18</span></span>
+      <span class="date"><span class="date-dow">Tue</span><span class="date-num num">13</span><span class="date-from num">from $18</span></span>
+      <span class="date is-locked"><span class="date-dow">Wed</span><span class="date-num num">14</span><span class="date-from">Volley</span></span>
+    </div>
+    <div class="segment">
+      <span class="segment-item">Morning</span>
+      <span class="segment-item">Afternoon</span>
+      <span class="segment-item is-active">Evening</span>
+    </div>
+    <div class="slotlist g-peer">
+      <div class="slot"><span><span class="slot-time num">18:00</span><span class="slot-left">2 courts free</span></span><span class="slot-price num">$36</span></div>
+
+      <!-- ATTACHED: the court panel hangs off the selected slot, not between two slots -->
+      <div class="g-attached">
+        <div class="slot is-selected"><span><span class="slot-time num">19:00</span><span class="slot-left">3 courts free</span></span><span class="slot-price num">$36</span></div>
+        <div class="courts">
+          <div class="courts-label">Choose your court</div>
+          <div class="court-grid">
+            <span class="court"><span class="court-name">C1</span></span>
+            <span class="court is-taken"><span class="court-name">C2</span><span class="court-state">Booked</span></span>
+            <span class="court is-taken"><span class="court-name">C3</span><span class="court-state">Booked</span></span>
+            <span class="court is-selected"><span class="court-name">C4</span></span>
+            <span class="court"><span class="court-name">C5</span></span>
+            <span class="court is-taken"><span class="court-name">C6</span><span class="court-state">Booked</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slot is-full"><span><span class="slot-time num">20:00</span><span class="slot-left">Fully booked</span></span><span class="slot-price num">$36</span></div>
+    </div>
+    <div class="bookbar">
+      <div class="bookbar-row"><span class="bookbar-sel">Sun 11 Oct · 19:00 · Court 4</span><span class="bookbar-total num">$36</span></div>
+      <button class="btn btn-primary">Continue</button>
+    </div>
+  </div>
+  <p class="frame-why">The selected slot is now a dark gradient card rather than an outline — the strongest signal on the screen, with its price in lime. The court panel sits in a recessed tint.</p>
+</div>
+
+<!-- ===== S14 ===== -->
+<div class="frame-wrap">
+  <div class="frame-label">S14 · Booking confirmed ★</div>
+  <div class="frame">
+    <div class="statusbar">
+      <span class="sb-time num">9:41</span>
+      <span class="notch"></span>
+      <span class="sb-right">
+        <svg class="sb-glyph" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0.5" width="3" height="11.5" rx="1"/></svg>
+        <svg class="sb-glyph" width="17" height="12" viewBox="0 0 17 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1.1 4.1a11 11 0 0 1 14.8 0"/><path d="M3.9 6.9a7 7 0 0 1 9.2 0"/><path d="M6.7 9.7a3 3 0 0 1 3.6 0"/></svg>
+        <svg class="sb-glyph" width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect class="sb-batt-shell" x="0.5" y="0.5" width="22" height="12" rx="3.8"/><path class="sb-batt-cap" d="M24.3 4.6c1 .4 1 3.4 0 3.8z"/><rect class="sb-batt-fill" x="2" y="2" width="18.5" height="9" rx="2.4"/></svg>
+      </span>
+    </div>
+    <div class="scroll scroll-nobar">
+      <div class="g-section">
+
+        <div class="confirm-wrap">
+          <span class="confirm-mark"><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="confirm-title">Court 4 is yours</span>
+          <span class="confirm-sub">Sun 11 Oct · 19:00–20:00</span>
+        </div>
+
+        <div class="g-group">
+          <div class="hero-stack">
+            <div class="hero hero-ink">
+              <svg class="hero-motif" viewBox="0 0 440 200" aria-hidden="true">
+                <rect x="3" y="3" width="434" height="194" rx="4"/>
+                <path d="M220 3v194"/><path d="M150 3v194"/><path d="M290 3v194"/>
+                <path d="M3 100h147"/><path d="M290 100h147"/>
+              </svg>
+              <div class="row">
+                <span class="hero-eyebrow">Amount due</span>
+                <span class="hero-badge">Not paid yet</span>
+              </div>
+              <span class="hero-number hero-amount num">$36.00</span>
+              <div class="hero-caption">
+                <span class="gcircle gcircle-onink"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+                <span class="hero-caption-text">Pay at the counter when you arrive</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="factstrip">
+            <div class="fact">
+              <span class="fact-ico"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>
+              <span><span class="fact-label">You will earn</span><span class="fact-value num">+36 pts</span></span>
+            </div>
+            <div class="fact">
+              <span class="fact-ico fact-ico-cool"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+              <span><span class="fact-label">Free cancel until</span><span class="fact-value num">Sat 19:00</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="summary-row">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span class="summary-label">Venue</span><span class="summary-value">Pika District 7 · 28 Nguyen Luong Bang</span></span>
+          </div>
+          <div class="divider"></div>
+          <p class="policy">Cancel for free up to <strong>24 hours</strong> before your slot. After that the court stays reserved and the fee still applies.</p>
+        </div>
+
+        <button class="btn btn-primary">View booking</button>
+
+      </div>
+    </div>
+  </div>
+  <p class="frame-why">The amount due is now the hero: stacked edges, gradient, the largest number in the product, with the instruction in a frosted row beneath it.</p>
+</div>
+
+<!-- ===== S19 ===== -->
+<div class="frame-wrap">
+  <div class="frame-label">S19 · My bookings</div>
+  <div class="frame">
+    <div class="statusbar">
+      <span class="sb-time num">9:41</span>
+      <span class="notch"></span>
+      <span class="sb-right">
+        <svg class="sb-glyph" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0.5" width="3" height="11.5" rx="1"/></svg>
+        <svg class="sb-glyph" width="17" height="12" viewBox="0 0 17 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1.1 4.1a11 11 0 0 1 14.8 0"/><path d="M3.9 6.9a7 7 0 0 1 9.2 0"/><path d="M6.7 9.7a3 3 0 0 1 3.6 0"/></svg>
+        <svg class="sb-glyph" width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect class="sb-batt-shell" x="0.5" y="0.5" width="22" height="12" rx="3.8"/><path class="sb-batt-cap" d="M24.3 4.6c1 .4 1 3.4 0 3.8z"/><rect class="sb-batt-fill" x="2" y="2" width="18.5" height="9" rx="2.4"/></svg>
+      </span>
+    </div>
+    <div class="appbar appbar-tight"><span class="appbar-venue">My bookings</span></div>
+    <div class="tabs"><span class="tab-item is-active">Upcoming</span><span class="tab-item">Past</span></div>
+    <div class="scroll">
+      <div class="g-peer">
+        <div class="booking">
+          <span class="datebox"><span class="datebox-dow">Sun</span><span class="datebox-num num">11</span></span>
+          <span class="grow">
+            <span class="booking-title">Court 4 · 19:00–20:00</span>
+            <span class="nav-meta">Pika District 7</span>
+            <span class="booking-chips"><span class="chip chip-success">Confirmed</span><span class="chip chip-warning num">+36 pts pending</span></span>
+          </span>
+        </div>
+        <div class="booking">
+          <span class="datebox datebox-accent"><span class="datebox-dow">Tue</span><span class="datebox-num num">13</span></span>
+          <span class="grow">
+            <span class="booking-title">Court 4 · 19:00–20:00</span>
+            <span class="nav-meta">Pika District 7</span>
+            <span class="series-row">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+              Weekly series · 6 of 8 remaining
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
+          </span>
+        </div>
+        <div class="booking">
+          <span class="datebox"><span class="datebox-dow">Sat</span><span class="datebox-num num">17</span></span>
+          <span class="grow">
+            <span class="booking-title">Court 2 · 08:00–09:00</span>
+            <span class="nav-meta">Pika Thao Dien</span>
+            <span class="booking-chips"><span class="chip chip-neutral num">$18 · off-peak</span></span>
+          </span>
+        </div>
+        <p class="list-end">That is everything booked. Your Thursday slot opens on Monday.</p>
+      </div>
+    </div>
+    <nav class="tabbar">
+      <span class="tab tab-home"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Home</span>
+      <span class="tab tab-book"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>Book</span>
+      <span class="tab tab-bookings is-active"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>Bookings</span>
+      <span class="tab tab-membership"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>Rewards</span>
+      <span class="tab tab-profile"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Profile</span>
+    </nav>
+  </div>
+  <p class="frame-why">Rows become cards floating on the wash, so repetition stays legible without dividers. The series row keeps its lime date block.</p>
+</div>
+
+<!-- ===== S27 ===== -->
+<div class="frame-wrap">
+  <div class="frame-label">S27 · Membership</div>
+  <div class="frame">
+    <div class="statusbar">
+      <span class="sb-time num">9:41</span>
+      <span class="notch"></span>
+      <span class="sb-right">
+        <svg class="sb-glyph" width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0.5" width="3" height="11.5" rx="1"/></svg>
+        <svg class="sb-glyph" width="17" height="12" viewBox="0 0 17 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M1.1 4.1a11 11 0 0 1 14.8 0"/><path d="M3.9 6.9a7 7 0 0 1 9.2 0"/><path d="M6.7 9.7a3 3 0 0 1 3.6 0"/></svg>
+        <svg class="sb-glyph" width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect class="sb-batt-shell" x="0.5" y="0.5" width="22" height="12" rx="3.8"/><path class="sb-batt-cap" d="M24.3 4.6c1 .4 1 3.4 0 3.8z"/><rect class="sb-batt-fill" x="2" y="2" width="18.5" height="9" rx="2.4"/></svg>
+      </span>
+    </div>
+    <div class="scroll">
+      <div class="home-head">
+        <span class="appbar-venue">Membership</span>
+        <span class="gcircle gcircle-dark"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+      </div>
+
+      <div class="hero-stack hero-stack-section">
+        <div class="hero hero-accent">
+          <svg class="hero-motif" viewBox="0 0 440 200" aria-hidden="true">
+            <rect x="3" y="3" width="434" height="194" rx="4"/>
+            <path d="M220 3v194"/>
+            <path d="M150 3v194"/>
+            <path d="M290 3v194"/>
+            <path d="M3 100h147"/>
+            <path d="M290 100h147"/>
+          </svg>
+          <div class="row">
+            <span class="hero-eyebrow">Hours remaining</span>
+            <span class="hero-badge hero-badge-dark">Volley</span>
+          </div>
+          <span class="hero-number num">8.0<span class="unit">hours</span></span>
+          <div class="meter">
+            <span class="tick is-on"></span><span class="tick is-on"></span><span class="tick is-on"></span>
+            <span class="tick is-on"></span><span class="tick is-on"></span><span class="tick is-on"></span>
+            <span class="tick is-on"></span><span class="tick is-on"></span><span class="tick"></span><span class="tick"></span>
+          </div>
+          <div class="meter-note">
+            <span>10-hour pack</span>
+            <span>expires 24 Dec</span>
+          </div>
+          <div class="frosted frosted-dark frosted-col">
+            <div class="row">
+              <span class="frosted-lead">
+                <span class="gcircle gcircle-onink"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>
+                <span class="hero-sub num">1,284 pts · 1,216 to Smash</span>
+              </span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </div>
+            <div class="track-line"><div class="track-fill fill-to-smash"></div></div>
+            <div class="track-labels"><span>Rally</span><span class="is-current">Volley</span><span>Smash</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g-peer">
+        <div class="nav-row">
+          <span class="nav-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></span>
+          <span class="grow"><span class="nav-title">Packages</span><span class="nav-meta">Buy or renew a block of hours</span></span>
+          <svg class="icon nav-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <div class="nav-row">
+          <span class="nav-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"/><rect x="3" y="7" width="18" height="4" rx="1"/></svg></span>
+          <span class="grow"><span class="nav-title">Gifts</span><span class="nav-meta">Paddle grip from 600 pts</span></span>
+          <svg class="icon nav-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <div class="nav-row">
+          <span class="nav-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <span class="grow"><span class="nav-title">Points history</span><span class="nav-meta">36 pts pending from Sun 11 Oct</span></span>
+          <svg class="icon nav-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+    </div>
+    <nav class="tabbar">
+      <span class="tab tab-home"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>Home</span>
+      <span class="tab tab-book"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>Book</span>
+      <span class="tab tab-bookings"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></span>Bookings</span>
+      <span class="tab tab-membership is-active"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg></span>Rewards</span>
+      <span class="tab tab-profile"><span class="tab-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Profile</span>
+    </nav>
+  </div>
+  <p class="frame-why">The lime hero — the one saturated card in the product — with the tick bar borrowed from the reference's score card and the tier progress in a frosted row.</p>
+</div>
+
+</div>
+</body>
+</html>

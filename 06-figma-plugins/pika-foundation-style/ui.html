@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", -apple-system, system-ui, sans-serif;
+    font-size: 12px;
+    background: var(--figma-color-bg);
+    color: var(--figma-color-text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* === Header === */
+  .header {
+    padding: 12px 16px 8px;
+    border-bottom: 1px solid var(--figma-color-border);
+  }
+  .title {
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0;
+  }
+  .subtitle {
+    color: var(--figma-color-text-secondary);
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* === Tabs === */
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--figma-color-border);
+    flex-shrink: 0;
+  }
+  .tab {
+    padding: 10px 14px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    color: var(--figma-color-text-secondary);
+    font-size: 12px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tab:hover { color: var(--figma-color-text); }
+  .tab.active {
+    color: var(--figma-color-text);
+    border-bottom-color: var(--figma-color-bg-brand);
+    font-weight: 500;
+  }
+
+  /* === Panel === */
+  .panel {
+    padding: 12px 16px;
+    display: none;
+    flex: 1;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .panel.active { display: flex; }
+
+  .desc {
+    color: var(--figma-color-text-secondary);
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  /* === Buttons === */
+  .button-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+  button {
+    padding: 7px 10px;
+    border: 1px solid var(--figma-color-border);
+    border-radius: 6px;
+    background: var(--figma-color-bg);
+    color: var(--figma-color-text);
+    cursor: pointer;
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  button:hover {
+    background: var(--figma-color-bg-hover);
+  }
+  button.primary {
+    background: var(--figma-color-bg-brand);
+    color: var(--figma-color-text-onbrand);
+    border-color: transparent;
+  }
+  button.primary:hover {
+    background: var(--figma-color-bg-brand-hover);
+  }
+  button.danger {
+    color: var(--figma-color-text-danger);
+    border-color: var(--figma-color-border);
+  }
+  button.danger:hover {
+    background: var(--figma-color-bg-danger-tertiary);
+  }
+
+  /* === Log console === */
+  .log {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+    font-size: 11px;
+    padding: 10px;
+    border-radius: 6px;
+    flex: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.55;
+    border: 1px solid var(--figma-color-border);
+  }
+  .log:empty::before {
+    content: 'Log output appears here…';
+    color: #555;
+    font-style: italic;
+  }
+
+  /* === Placeholder for Phase 2 + 3 === */
+  .placeholder {
+    text-align: center;
+    color: var(--figma-color-text-secondary);
+    padding: 80px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .placeholder-icon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .placeholder-sub {
+    font-size: 11px;
+    color: var(--figma-color-text-tertiary);
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">Pika — Foundation &amp; Styles</div>
+  <div class="subtitle">Creates Effect Styles · Text Styles · Foundation board (color · type · spacing · radius · elevation) from variable tokens</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-tab="effect">Effect Style</div>
+  <div class="tab" data-tab="text">Text Style</div>
+  <div class="tab" data-tab="foundation">Foundation</div>
+</div>
+
+<!-- TAB: Effect Style -->
+<div class="panel active" data-panel="effect">
+  <div class="desc">
+    Creates Pika's 4 Effect Styles — <code>Elevation/card</code> · <code>hero</code> · <code>hero-accent</code> · <code>bar</code> — from <b>Semantic / elevation</b>, the exact 4 shadows of the approved proof screens. Each is <b>one</b> layer: <code>card</code> 0 2 10 ink&nbsp;5% (white cards, factstrip, glass blocks) · <code>hero</code> 0 12 30 ink&nbsp;14% (navy gradient heroes, sheets) · <code>hero-accent</code> 0 12 30 lime&nbsp;26% (the CTA and selected-slot glow) · <code>bar</code> 0 10 34 ink&nbsp;14% (floating glass tab bar, summary bar). Every layer binds 5 properties (offset x/y · blur · spread · color) — change a token and the style updates. An optional 6th token <code>type</code> = <code>inner</code> makes that layer an <b>inner shadow</b>; without it, a drop shadow.
+  </div>
+  <div class="button-row">
+    <button onclick="send('check-status')">Check Status</button>
+    <button class="primary" onclick="send('generate-effects')">Generate</button>
+    <button class="danger" onclick="send('wipe-effects')">Wipe</button>
+  </div>
+  <div class="log" id="log-effect"></div>
+</div>
+
+<!-- TAB: Text Style -->
+<div class="panel" data-panel="text">
+  <div class="desc">
+    Creates <b>14 Text Styles — one per semantic typography role</b>: <code>Amount 52</code> · <code>Hero 44</code> · <code>Display 32</code> · <code>Heading 24</code> · <code>Title 20</code> · <code>Body-lg 17</code> · <code>Body / Body-bold 15</code> · <code>Label / Label-bold 13</code> · <code>Caption 12</code> · <code>Micro / MicroCaps 11</code> · <code>StatusBar 15</code>. Font: <b>Inter</b>, 4 weights (Regular 400 · Medium 500 · Semi&nbsp;Bold 600 · Bold 700) — Pika uses no 800. Each style name lowercased <i>is</i> its semantic path, so values come from <code>typography/{role}/*</code> and only fall back to <code>font/*</code> primitives if Semantic was not imported.
+    <br><br>
+    <b>Units:</b> <code>fontFamily · fontSize · letterSpacing</code> (as Figma %) and <code>fontStyle</code> are <b>bound to variables</b>. <code>lineHeight</code> is written as a <b>PERCENT literal</b> (1.08 → 108%): the token is a CSS multiplier and Figma reads a bound number in the current unit, so binding it would mean 1.08%. Change a lineHeight token → run Generate again.
+  </div>
+  <div class="button-row">
+    <button onclick="send('check-text-status')">Check Status</button>
+    <button class="primary" onclick="send('generate-text-styles')">Generate</button>
+    <button class="danger" onclick="send('wipe-text-styles')">Wipe</button>
+  </div>
+  <div class="log" id="log-text"></div>
+</div>
+
+<!-- TAB: Foundation -->
+<div class="panel" data-panel="foundation">
+  <div class="desc">
+    <b>Reads Primitive tokens → draws a Color + Typography board on canvas.</b> The plugin scans the <b>Primitive</b> collection and lists <i>every color family</i> (navy · lime · sky · neutral · positive · warning · negative · wash · static · transparent — 10 families, 66 swatches) as a swatch grid — each cell <b>binds the variable</b> + shows name &amp; hex; builds the <i>typography type scale</i> (font family, weight, size, line-height, letter-spacing); draws <i>spacing bars</i> and <i>radius boxes</i> bound to the <code>space/*</code> and <code>radius/*</code> tokens; and shows every <i>Elevation</i> style on a card (run the Effect tab first).
+    <br><br>
+    The board's own chrome uses Pika's primitives (navy/900 header, lime/200 accent, wash/1 tint), so the Foundation page reads like the product. <b>Note:</b> the 8 gradient tokens are STRING variables and are <i>not</i> drawn here — they become Paint Styles by hand in Step 14.
+    <br><br>
+    <b>Requires:</b> run the <i>Import Tokens</i> plugin first so the Primitive collection exists. <b>Generate</b> creates/replaces a <code>🎨 Foundation</code> page; <b>Wipe</b> removes the plugin-generated board.
+  </div>
+  <div class="button-row">
+    <button onclick="send('check-foundation-status')">Check Status</button>
+    <button class="primary" onclick="send('generate-foundation')">Generate</button>
+    <button class="danger" onclick="send('wipe-foundation')">Wipe</button>
+  </div>
+  <div class="log" id="log-foundation"></div>
+</div>
+
+<script>
+  // === Tab switching ===
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.querySelector('.panel[data-panel="' + t.dataset.tab + '"]').classList.add('active');
+    });
+  });
+
+  // === Send message to plugin code ===
+  function send(type) {
+    parent.postMessage({ pluginMessage: { type: type } }, '*');
+  }
+
+  // === Receive log messages — append to the active tab's log ===
+  window.onmessage = function(e) {
+    const msg = e.data && e.data.pluginMessage;
+    if (!msg) return;
+    if (msg.type === 'log') {
+      const activeLog = document.querySelector('.panel.active .log');
+      if (activeLog) {
+        activeLog.textContent += msg.text + '\n';
+        activeLog.scrollTop = activeLog.scrollHeight;
+      }
+    }
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kit Guide — Brief to Figma with Claude</title><style>
+:root{--bg:#f7f6f3;--card:#fff;--ink:#1c1c1e;--mute:#6b6b70;--line:#e4e2dd;--acc:#5b3fd6;--soft:#eee9ff;--you:#e6f4ec;--youi:#1f7a45;--cl:#eee9ff;--gate:#fff4e0;--gatei:#9a5b00}
+@media(prefers-color-scheme:dark){:root{--bg:#131315;--card:#1c1c1f;--ink:#ececef;--mute:#9b9ba3;--line:#2e2e33;--acc:#a595ff;--soft:#26213d;--you:#17301f;--youi:#5fd08f;--cl:#26213d;--gate:#2e2616;--gatei:#e5b265}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,-apple-system,system-ui,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:32px 20px 80px}h1{font-size:30px;line-height:1.2;margin:0 0 8px}h2{font-size:22px;margin:44px 0 10px}h3{font-size:17px;margin:0 0 4px}
+.sub{color:var(--mute)}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:12px 0}
+code,pre{font-family:ui-monospace,Menlo,monospace;font-size:13px}pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow:auto;line-height:1.55}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{color:var(--mute);font-weight:600}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap}.you{background:var(--you);color:var(--youi)}.cl{background:var(--cl);color:var(--acc)}.gt{background:var(--gate);color:var(--gatei)}
+.num{color:var(--acc);font-weight:700}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.grid .card{margin:0}
+.lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin:10px 0 2px}
+ul{margin:4px 0;padding-left:20px}.toc a{color:var(--acc);text-decoration:none;margin-right:14px;font-size:14px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flow span{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:14px}.flow i{color:var(--mute);font-style:normal}
+</style></head><body><div class="w">
+
+<h1>Kit Guide — what is in this kit and what each part does</h1>
+<p class="sub">Read this once, top to bottom, before your first project. It explains every file and folder in the kit, who fills it, at which step, and why it exists. For the step-by-step playbook, open <code>00-workflow-map.html</code>.</p>
+<p class="toc"><a href="#big">1 · The big picture</a><a href="#root">2 · Files at the top</a><a href="#folders">3 · The folders</a><a href="#prompts">4 · The prompts</a><a href="#steps">5 · 17 steps → files</a><a href="#run">6 · How a session runs</a><a href="#rules">7 · Rules</a></p>
+
+<h2 id="big">1 · The big picture</h2>
+<div class="card">
+<p style="margin-top:0">You bring a <b>brief</b> and a few <b>assets</b>. Claude turns them into research, a visual direction, design tokens, a full UI, and finally a <b>Figma file</b> with real components and a clickable prototype — in <b>8 phases and 17 steps</b>. After each phase there is a <b>gate</b>: you review and approve before anything moves on.</p>
+<div class="flow"><span>Brief + assets</span><i>→</i><span>Research</span><i>→</i><span>Structure</span><i>→</i><span>Visual direction</span><i>→</i><span>Tokens</span><i>→</i><span>Final UI</span><i>→</i><span>Figma</span><i>→</i><span>Prototype + handoff</span></div>
+<p style="margin-bottom:0"><b>Three things make the kit work:</b> the <b>folders</b> hold every result in a fixed place · the <b>base prompts</b> in <code>_prompts/</code> tell Claude exactly what to do in each step · <code>_progress.md</code> remembers where the project stands, so any new session can continue.</p>
+</div>
+<p><span class="tag you">YOU</span> = you add or do it &nbsp; <span class="tag cl">CLAUDE</span> = Claude writes it &nbsp; <span class="tag gt">GATE</span> = you approve</p>
+
+<h2 id="root">2 · Files at the top of the kit</h2>
+<pre>student-starter-kit/
+  00-START-HERE.md       ← read first: what to add, how to start
+  00-kit-guide.html      ← this page
+  00-workflow-map.html   ← the playbook: every step, what it does, what it outputs
+  CLAUDE.md              ← the rules Claude reads automatically
+  _progress.md           ← where the project stands (Claude keeps it updated)
+  _prompts/              ← one base prompt per step
+  01-brief/ … 09-handoff/ ← your project's work, in workflow order</pre>
+<table>
+<tr><th style="width:190px">File</th><th>What it is for</th><th style="width:120px">Who</th></tr>
+<tr><td><code>00-START-HERE.md</code></td><td>The short checklist: what to put in <code>01-brief/</code> and <code>02-assets/</code>, and the one command to start (<code>Read Folder</code>).</td><td><span class="tag you">YOU</span> read</td></tr>
+<tr><td><code>00-kit-guide.html</code></td><td>This page — the map of the kit itself: every folder and file and its job.</td><td><span class="tag you">YOU</span> read</td></tr>
+<tr><td><code>00-workflow-map.html</code></td><td>The playbook. For each of the 17 steps: goal, what is done, output file, what is checked, and which base prompt runs it. Open it any time to see where you are.</td><td><span class="tag you">YOU</span> read</td></tr>
+<tr><td><code>CLAUDE.md</code></td><td>The operating rules. Claude reads it automatically at the start of every session: folder map, the <code>Read Folder</code> trigger, the non-negotiable rules. <b>Do not edit.</b></td><td><span class="tag cl">CLAUDE</span> reads</td></tr>
+<tr><td><code>_progress.md</code></td><td>The project's memory: status of every step (not started / in progress / done / stale), every gate (open / APPROVED, with date), and the Figma link. A new session reads it first and continues from there. Empty at start.</td><td><span class="tag cl">CLAUDE</span> updates</td></tr>
+<tr><td><code>_prompts/</code></td><td>The 17 base prompts — see section 4.</td><td><span class="tag cl">CLAUDE</span> follows</td></tr>
+</table>
+
+<h2 id="folders">3 · The numbered folders — your project's work</h2>
+<p class="sub">Numbered in the order you meet them. The folder number is <b>not</b> the step number — the "Step" column tells you when each folder is filled.</p>
+
+<div class="grid">
+<div class="card"><h3><span class="num">01</span> brief/ <span class="tag you">YOU</span></h3>
+<div class="lab">Job</div>The client's request, exactly as it arrived.
+<div class="lab">Put inside</div>An image, PDF or text file. No client? Write 5–10 lines yourself.
+<div class="lab">When</div>Before Step 01. <b>Without it Claude will not start.</b></div>
+
+<div class="card"><h3><span class="num">02</span> assets/ <span class="tag you">YOU</span></h3>
+<div class="lab">Job</div>Everything visual you already own. Claude uses it exactly as given.
+<div class="lab">Put inside</div><code>logo/</code> real SVG/PNG (+ a dark-surface version if the app has dark screens) · <code>moodboard/</code> 2–4 style screenshots · <code>icons/</code> SVGs or <code>icon-library.txt</code> · <code>fonts/</code> files or <code>font-name.txt</code> · <code>moodboard/screens/S##-name/</code> screen references (added in Step 08) · <code>images/</code> images you generate from Claude's prompts (added in Step 12)
+<div class="lab">When</div>Before Step 01. Claude stops before Step 07 if any is missing.</div>
+
+<div class="card"><h3><span class="num">03</span> research/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>All the thinking before drawing — one markdown file per step.
+<div class="lab">Files</div><code>01-intake</code> · <code>02-brief-analysis</code> · <code>03-business</code> · <code>04-users</code> · <code>05-features-sitemap</code> · <code>06-user-flows</code> · <code>07-palette</code> (+ <code>07-palette-options.html</code>) · <code>08-moodboard</code>
+<div class="lab">When</div>Steps 01–08. Empty at start.</div>
+
+<div class="card"><h3><span class="num">04</span> proof-ui/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>Test the style on 5 screens before building everything.
+<div class="lab">Files</div><code>proof-5-screens.html</code> — all values as CSS variables, so tokens can be read from it.
+<div class="lab">When</div>Step 09.</div>
+
+<div class="card"><h3><span class="num">05</span> tokens/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>The design system as data, in 3 levels.
+<div class="lab">Files</div><code>1-primitive.json</code> raw values · <code>2-semantic.json</code> roles, Light/Dark · <code>3-component.json</code> component values
+<div class="lab">When</div>Starter samples at first. Rewritten in Step 10, re-synced in 13, extended in 15.</div>
+
+<div class="card"><h3><span class="num">06</span> figma-plugins/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>Tools that load the tokens into Figma.
+<div class="lab">Files</div><code>…-importoken/</code> tokens → Figma variables · <code>…-foundation-style/</code> text styles, effect styles, foundation board
+<div class="lab">When</div>Renamed with the project slug in Step 01, updated for the project in Step 11 (and 13). You run them in Step 14.</div>
+
+<div class="card"><h3><span class="num">07</span> claude-design-input/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>The package you take to Claude Design — everything it needs to build the full UI. (08 holds what comes back.)
+<div class="lab">Files</div><code>master-spec.md</code> every screen and state · <code>image-prompts.md</code> one image prompt per slot — generate them first, save in <code>02-assets/images/</code> · <code>claude-design-prompt.md</code> the prompt you paste into Claude Design, with the images attached
+<div class="lab">When</div>Step 12.</div>
+
+<div class="card"><h3><span class="num">08</span> final-ui/ <span class="tag you">YOU</span></h3>
+<div class="lab">Job</div>The finished UI — from Step 13 on, the source of truth.
+<div class="lab">Files</div><code>final-ui.html</code> — exported by you from Claude Design.
+<div class="lab">When</div>Steps 12–13.</div>
+
+<div class="card"><h3><span class="num">09</span> handoff/ <span class="tag cl">CLAUDE</span></h3>
+<div class="lab">Job</div>The package developers receive.
+<div class="lab">Files</div><code>dev-handoff.md</code> · <code>master-spec.md</code> · <code>tokens/</code> · <code>assets/</code>
+<div class="lab">When</div>Step 17.</div>
+</div>
+<p class="sub">Every folder also has a <code>README.md</code> that says what goes in it. The Figma work (Steps 14–16) lives in the Figma file itself; its link is kept in <code>_progress.md</code>.</p>
+
+<h2 id="prompts">4 · <code>_prompts/</code> — the base prompts</h2>
+<div class="card">
+<p style="margin-top:0">One prompt per step: <code>01-intake.md</code> … <code>17-handoff.md</code>, plus a <code>README.md</code> with the rules they all share. They are the <b>base</b> — identical in every project and <b>never edited</b> for one. You do not paste them anywhere: Claude opens the right one at each step.</p>
+<p>A base prompt contains no project details. It says <b>which files to read</b>, and the project's details come from there — so the same prompt works for a café app and for a car-rental app.</p>
+<div class="lab">Every prompt has the same parts</div>
+<table>
+<tr><td style="width:170px"><b>Reads</b></td><td>The files this step uses (brief, earlier outputs, tokens…).</td></tr>
+<tr><td><b>Stop if</b></td><td>Conditions that block the step — e.g. the previous gate is not approved, or assets are missing. Claude says which one and stops.</td></tr>
+<tr><td><b>Do</b></td><td>The work, in numbered order, with table templates.</td></tr>
+<tr><td><b>Output</b></td><td>The exact file and its structure.</td></tr>
+<tr><td><b>Check</b></td><td>A checklist Claude must pass before handing back. Anything with a number is measured by running code, not guessed.</td></tr>
+<tr><td><b>End of turn</b></td><td>A short report in a fixed format, then Claude stops.</td></tr>
+</table>
+<p style="margin-bottom:0">Step 15 (Figma components) has the longest prompt: inventory first, 3–5 components per turn, each component checked before the next — because that is where things go wrong most often.</p>
+</div>
+
+<h2 id="steps">5 · The 17 steps — what runs, what comes out</h2>
+<table>
+<tr><th>Phase</th><th>Step</th><th>Base prompt</th><th>Output</th></tr>
+<tr><td rowspan="2">1 · Brief</td><td>01 Intake &amp; input check</td><td><code>01-intake.md</code></td><td><code>03-research/01-intake.md</code></td></tr>
+<tr><td>02 Brief analysis &amp; client questions</td><td><code>02-brief-analysis.md</code></td><td><code>03-research/02-brief-analysis.md</code> <span class="tag gt">GATE 1</span></td></tr>
+<tr><td rowspan="2">2 · Market &amp; users</td><td>03 Business, competitors, North Star</td><td><code>03-business.md</code></td><td><code>03-research/03-business.md</code></td></tr>
+<tr><td>04 User groups &amp; personas</td><td><code>04-users.md</code></td><td><code>03-research/04-users.md</code> <span class="tag gt">GATE 2</span></td></tr>
+<tr><td rowspan="2">3 · Structure</td><td>05 Features &amp; sitemap</td><td><code>05-features-sitemap.md</code></td><td><code>03-research/05-features-sitemap.md</code></td></tr>
+<tr><td>06 User flows</td><td><code>06-user-flows.md</code></td><td><code>03-research/06-user-flows.md</code> <span class="tag gt">GATE 3</span></td></tr>
+<tr><td rowspan="3">4 · Visual direction</td><td>07 Colour palette from the logo</td><td><code>07-palette.md</code></td><td><code>03-research/07-palette.md</code> + preview HTML</td></tr>
+<tr><td>08 Moodboard &amp; screen references</td><td><code>08-moodboard.md</code></td><td><code>03-research/08-moodboard.md</code> · <code>02-assets/moodboard/screens/</code></td></tr>
+<tr><td>09 Five proof screens</td><td><code>09-proof-screens.md</code></td><td><code>04-proof-ui/proof-5-screens.html</code> <span class="tag gt">GATE 4</span></td></tr>
+<tr><td rowspan="2">5 · Design system</td><td>10 Tokens</td><td><code>10-tokens.md</code></td><td><code>05-tokens/</code> 3 JSON files + <code>token-mapping.md</code></td></tr>
+<tr><td>11 Update the 2 plugins</td><td><code>11-plugins.md</code></td><td><code>06-figma-plugins/</code> <span class="tag gt">GATE 5</span></td></tr>
+<tr><td rowspan="2">6 · Final UI</td><td>12 Master spec → Claude Design</td><td><code>12-master-spec.md</code></td><td><code>07-claude-design-input/</code> · <code>02-assets/images/</code> · <code>08-final-ui/final-ui.html</code></td></tr>
+<tr><td>13 Review &amp; re-sync</td><td><code>13-review-resync.md</code></td><td><code>05-tokens/</code> · <code>06-figma-plugins/</code> <span class="tag gt">GATE 6</span></td></tr>
+<tr><td rowspan="2">7 · Figma</td><td>14 Import tokens, styles &amp; screens</td><td><code>14-figma-import.md</code></td><td>Figma file</td></tr>
+<tr><td>15 Components, swap &amp; token matching</td><td><code>15-figma-component.md</code></td><td>Figma file · <code>3-component.json</code> <span class="tag gt">GATE 7</span></td></tr>
+<tr><td rowspan="2">8 · Delivery</td><td>16 Prototype</td><td><code>16-prototype.md</code></td><td>Figma prototype</td></tr>
+<tr><td>17 Developer handoff</td><td><code>17-handoff.md</code></td><td><code>09-handoff/</code> <span class="tag gt">GATE 8</span></td></tr>
+</table>
+<p class="sub">Some steps pause in the middle for you: Step 07 (pick a palette), Step 08 (save screen references), Step 12 (build and export in Claude Design), Step 14 (run the plugins in Figma).</p>
+
+<h2 id="run">6 · How a session runs</h2>
+<div class="card">
+<table>
+<tr><th style="width:170px">You type</th><th>What happens</th></tr>
+<tr><td><code>Read Folder</code></td><td>First time: Claude checks your brief and assets, shows a ✅/⚠ table, repeats back what it understood and asks to start. On a project already under way: Claude reads <code>_progress.md</code> and tells you where you are.</td></tr>
+<tr><td><code>continue</code></td><td>Claude runs the next step from its base prompt, saves the output, updates <code>_progress.md</code>, reports and stops.</td></tr>
+<tr><td><code>approved</code></td><td>At the end of a phase: Claude records the gate as APPROVED in <code>_progress.md</code>. The next phase can now start.</td></tr>
+</table>
+<div class="lab">Every step ends with the same short report</div>
+<pre>STEP 07 · Colour palette — done
+Files:        03-research/07-palette.md · 07-palette-options.html
+Key result:   3 palettes from the logo; option B recommended
+ASSUMPTIONS:  2   ·   [BLOCKER] questions: 0
+Measured:     contrast computed — 1 pair fails in option C
+_progress.md: updated
+Next:         Step 08 · Moodboard — say "continue" to run it</pre>
+<div class="lab">Changed your mind about an earlier step?</div>
+Say so. Claude re-runs that step, marks every step built on it as <b>stale</b> in <code>_progress.md</code>, and re-opens the gate — so nothing old slips through.
+</div>
+
+<h2 id="rules">7 · The rules that keep the result clean</h2>
+<div class="grid">
+<div class="card"><h3>You are the director</h3>Claude works fast; you approve every phase. Nothing passes a gate without your "approved".</div>
+<div class="card"><h3>No guessing</h3>Anything not in the brief is marked <code>ASSUMPTION</code>. Questions go to the client; blocking ones are tagged <code>[BLOCKER]</code>.</div>
+<div class="card"><h3>Test small first</h3>5 proof screens before the full UI. Most quality is decided in Steps 01–06.</div>
+<div class="card"><h3>One source of truth at a time</h3>Proof screens → first tokens. Final UI → Primitive &amp; Semantic tokens. Real Figma components → Component variables.</div>
+<div class="card"><h3>Assets as given</h3>Logo, icons and font used exactly as provided — never redrawn. Only fonts and icons you may use commercially.</div>
+<div class="card"><h3>Screen codes never change</h3><code>S01, S02…</code> are fixed once created, because every later file and the Figma file point to them.</div>
+</div>
+<p class="sub" style="margin-top:30px">Don't edit: <code>CLAUDE.md</code> · <code>_prompts/</code> · <code>_progress.md</code> (Claude keeps it). You edit: <code>01-brief/</code> · <code>02-assets/</code> · and you answer, choose and approve at every gate.</p>
+</div></body></html>

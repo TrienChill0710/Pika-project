@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    padding: 16px;
+    background: #FFFFFF;
+    color: #0F172A;
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    color: #64748B;
+    font-size: 11px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .file-row {
+    background: #F7F8FA;
+    border: 1px solid #EEF0F3;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .file-row.loaded {
+    background: #F9FDF1;
+    border-color: #0C1E36;
+  }
+  .file-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .file-row-title {
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .file-row-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #EEF0F3;
+    color: #64748B;
+  }
+  .file-row.loaded .file-row-status {
+    background: #0C1E36;
+    color: white;
+  }
+  .file-row-desc {
+    font-size: 10px;
+    color: #64748B;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .file-input-wrapper {
+    position: relative;
+  }
+  .file-input-wrapper:hover .file-button {
+    border-color: #0C1E36;
+    background: #F9FDF1;
+  }
+  .file-input-wrapper input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .file-button {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: white;
+    border: 1px dashed #CBD2DA;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 11px;
+    color: #475569;
+    cursor: pointer;
+  }
+  .file-row.loaded .file-button {
+    background: white;
+    border-style: solid;
+    border-color: #0C1E36;
+    color: #0C1E36;
+  }
+  .primary-btn {
+    width: 100%;
+    background: #0C1E36;
+    color: #C6F024;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  .primary-btn:disabled {
+    background: #CBD2DA;
+    cursor: not-allowed;
+  }
+  .primary-btn:not(:disabled):hover {
+    background: #33435A;
+  }
+  .info {
+    background: #EFF6FF;
+    border-left: 3px solid #3B82F6;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    color: #1E40AF;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .log {
+    background: #0F172A;
+    color: #94A3B8;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 10px;
+    max-height: 120px;
+    overflow-y: auto;
+    margin-top: 12px;
+    white-space: pre-wrap;
+  }
+  .log .ok { color: #4DB54D; }
+  .log .err { color: #F87171; }
+</style>
+</head>
+<body>
+
+<h2>Pika — Import Tokens</h2>
+<p class="subtitle">Select the 3 JSON files from <code>05-tokens/</code> in the order below, then click Import.</p>
+
+<div class="info">
+  <strong>Order matters.</strong> Variables are created Primitive → Semantic → Component, because an alias only resolves once its target collection exists. Collection names and modes are read from each file (<code>$collection</code> / <code>$mode</code>) — Pika ships <b>light mode only</b>, so Semantic has one mode: <b>Light</b>. Expected total: <b>178 + 242 + 130 = 550</b> variables.
+</div>
+
+<div class="file-row" id="row-primitive">
+  <div class="file-row-header">
+    <span class="file-row-title">1. Primitive · 178 tokens</span>
+    <span class="file-row-status">Not selected</span>
+  </div>
+  <div class="file-row-desc">Raw values only, no decisions: navy / lime / sky / neutral ramps, 3 wash tints, 20 transparent colours, 8 gradients (STRING), space · sizing · radius · borderWidth · opacity · font · shadow.</div>
+  <div class="file-input-wrapper">
+    <div class="file-button">📁 Select 1-primitive.json</div>
+    <input type="file" accept=".json" data-tier="primitive">
+  </div>
+</div>
+
+<div class="file-row" id="row-semantic">
+  <div class="file-row-header">
+    <span class="file-row-title">2. Semantic · 242 tokens · mode Light</span>
+    <span class="file-row-status">Not selected</span>
+  </div>
+  <div class="file-row-desc">Every value is an alias to a Primitive. Roles: bg · content · icon · border · spacing (incl. the 4-step rhythm) · sizing · radius · elevation (4 levels) · typography (14 roles).</div>
+  <div class="file-input-wrapper">
+    <div class="file-button">📁 Select 2-semantic.json</div>
+    <input type="file" accept=".json" data-tier="semantic">
+  </div>
+</div>
+
+<div class="file-row" id="row-component">
+  <div class="file-row-header">
+    <span class="file-row-title">3. Component · 130 tokens</span>
+    <span class="file-row-status">Not selected</span>
+  </div>
+  <div class="file-row-desc">18 baseline component groups, aliasing Semantic only. 8 of the 18 appear in the proof screens — the rest are extended from the real components in Step 15.</div>
+  <div class="file-input-wrapper">
+    <div class="file-button">📁 Select 3-component.json</div>
+    <input type="file" accept=".json" data-tier="component">
+  </div>
+</div>
+
+<button class="primary-btn" id="import-btn" disabled>Import into Figma</button>
+
+<div class="log" id="log"></div>
+
+<script>
+  const files = { primitive: null, semantic: null, component: null };
+
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', (e) => {
+      const tier = e.target.dataset.tier;
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const json = JSON.parse(ev.target.result);
+          files[tier] = json;
+
+          const row = document.getElementById('row-' + tier);
+          row.classList.add('loaded');
+          row.querySelector('.file-row-status').textContent = '✓ Loaded';
+          row.querySelector('.file-button').textContent = '✓ ' + file.name;
+
+          updateImportBtn();
+          log('Loaded ' + tier + ': ' + file.name, 'ok');
+        } catch (err) {
+          log('Parse error ' + tier + ': ' + err.message, 'err');
+        }
+      };
+      reader.readAsText(file);
+    });
+  });
+
+  function updateImportBtn() {
+    const allLoaded = files.primitive && files.semantic && files.component;
+    document.getElementById('import-btn').disabled = !allLoaded;
+  }
+
+  function log(msg, level) {
+    const el = document.getElementById('log');
+    const span = document.createElement('span');
+    if (level) span.className = level;
+    span.textContent = msg + '\n';
+    el.appendChild(span);
+    el.scrollTop = el.scrollHeight;
+  }
+
+  document.getElementById('import-btn').addEventListener('click', () => {
+    log('Starting import...');
+    parent.postMessage({
+      pluginMessage: {
+        type: 'import',
+        primitive: files.primitive,
+        semantic: files.semantic,
+        component: files.component
+      }
+    }, '*');
+  });
+
+  // Receive log messages from plugin code
+  window.onmessage = (event) => {
+    const msg = event.data.pluginMessage;
+    if (!msg) return;
+    if (msg.type === 'log') {
+      log(msg.message, msg.level);
+    }
+  };
+</script>
+
+</body>
+</html>

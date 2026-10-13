@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pika — Palette options</title>
+<style>
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_400Regular.ttf');font-weight:400}
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_600SemiBold.ttf');font-weight:600}
+@font-face{font-family:Inter;src:url('../02-assets/fonts/Inter_700Bold.ttf');font-weight:700}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,sans-serif;margin:0;background:#0E1116;color:#E8EAED;padding:28px}
+h1{font-size:22px;margin:0 0 4px} .sub{color:#9AA0A6;font-size:13px;margin:0 0 24px;max-width:70ch;line-height:1.5}
+.wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.col{background:#161A20;border:1px solid #23282F;border-radius:14px;padding:18px}
+.col h2{font-size:16px;margin:0 0 6px} .idea{font-size:12.5px;color:#9AA0A6;line-height:1.5;margin:0 0 10px;min-height:56px}
+.idea.note{color:#C8CDD3;min-height:38px;border-left:2px solid #2B3views;border-left:2px solid #2B3038;padding-left:8px}
+.col h3{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7B8188;margin:20px 0 8px}
+.phone{border-radius:18px;overflow:hidden;border:1px solid #23282F;margin-bottom:6px}
+.ph-head{padding:14px 14px 12px} .ph-h-row{display:flex;align-items:center;gap:6px}
+.ph-logo{font-weight:700;font-size:17px;font-style:italic} .dot{width:9px;height:9px;border-radius:50%}
+.ph-venue{font-size:11px;opacity:.75;margin-top:3px}
+.ph-body{padding:12px}
+.datestrip{display:flex;gap:5px;margin-bottom:12px}
+.d{font-size:10.5px;padding:5px 8px;border-radius:7px;font-weight:600}
+.gridlabel{font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:12px}
+.gcell{border:1px solid;border-radius:8px;padding:7px 4px;text-align:center;font-size:9.5px;display:flex;flex-direction:column;gap:2px}
+.gcell b{font-size:10.5px} .gcell.off{text-decoration:line-through}
+.card{border:1px solid;border-radius:10px;padding:10px;margin-bottom:10px}
+.c-t{font-size:12.5px;font-weight:600} .c-s{font-size:11px;margin-top:2px}
+.chips{display:flex;gap:5px;margin-top:8px}
+.chip{font-size:9.5px;padding:3px 7px;border-radius:99px;font-weight:600}
+.inp{width:100%;border:1.5px solid;border-radius:9px;padding:8px 10px;font-size:11.5px;margin-bottom:8px;font-family:inherit}
+.btn{width:100%;border:0;border-radius:10px;padding:10px;font-size:12.5px;font-weight:600;margin-bottom:6px;font-family:inherit;cursor:default}
+.btn.ghost{background:transparent}
+.tier{border-radius:10px;padding:10px;margin-top:8px}
+.t-row{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;margin-bottom:6px}
+.bar{height:6px;border-radius:99px;overflow:hidden} .bar i{display:block;height:100%}
+.ramp{margin-bottom:10px} .rname{font-size:10.5px;color:#9AA0A6;margin-bottom:4px}
+.swr{display:flex;gap:2px} .swr.small{flex-wrap:wrap}
+.sw{flex:1;min-width:0;height:46px;border-radius:5px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:3px;overflow:hidden}
+.sw span{font-size:7.5px;color:#fff;mix-blend-mode:difference;font-weight:700}
+.sw em{font-size:5.5px;color:#fff;mix-blend-mode:difference;font-style:normal;letter-spacing:-.02em}
+.swr.small .sw{flex:0 0 calc(25% - 2px);height:40px}
+table.ck{width:100%;border-collapse:collapse;font-size:10.5px}
+.ck th{text-align:left;color:#7B8188;font-weight:600;padding:4px 3px;border-bottom:1px solid #23282F;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em}
+.ck td{padding:5px 3px;border-bottom:1px solid #1C2128;vertical-align:top}
+.ck td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ck code{font-size:9px;color:#9AA0A6}
+tr.ok td:last-child{color:#4ADE80;font-weight:700;font-size:9.5px}
+tr.bad td:last-child{color:#F87171;font-weight:700;font-size:9.5px}
+tr.note td:last-child{color:#FBBF24;font-weight:700;font-size:9.5px}
+tr.bad td{background:rgba(248,113,113,.07)}
+@media(max-width:1100px){.wrap{grid-template-columns:1fr}}
+</style></head><body>
+<h1>Pika — three palette options</h1>
+<p class="sub">Step 07. Every ratio below was computed with the WCAG 2.1 relative-luminance formula, not estimated. The sample shows the screens that decide this product: the availability grid with its $18 / $36 price difference, the pay-at-the-counter card, and the tier progress bar. Frame locked at 390 × 844, light mode only.</p>
+<div class="wrap"><section class="col">
+  <h2>A · Logo-faithful</h2>
+  <p class="idea">The logo, unedited. Deep navy carries the UI, lime is reserved for the one thing that matters on each screen.</p>
+  <p class="idea note">Navy is the action colour; lime is the second action and the highlight.</p>
+  
+<div class="phone" style="background:#FEFFFF;color:#1A2733">
+  <div class="ph-head" style="background:#0C1E36;color:#FEFFFF">
+    <div class="ph-h-row"><span class="ph-logo">Pika</span><span class="dot" style="background:#C6F024"></span></div>
+    <div class="ph-venue">District 7 · Today</div>
+  </div>
+  <div class="ph-body">
+    <div class="datestrip">
+      <span class="d" style="background:#0C1E36;color:#FEFFFF">Sat 10</span>
+      <span class="d" style="background:#EBECED;color:#5A5C5E">Sun 11</span>
+      <span class="d" style="background:#EBECED;color:#5A5C5E">Mon 12</span>
+    </div>
+    <div class="gridlabel" style="color:#747679">Court availability</div>
+    <div class="grid">
+      <div class="gcell" style="background:#EBECED;color:#5A5C5E;border-color:#BFC2C4"><b>18:00</b><span>$18</span></div>
+      <div class="gcell" style="background:#EEFDCD;color:#1A2733;border-color:#94BA00"><b>19:00</b><span>$36</span></div>
+      <div class="gcell sel" style="background:#C6F024;color:#1A2733;border-color:#648500"><b>20:00</b><span>$36</span></div>
+      <div class="gcell off" style="background:#D7D9DC;color:#8C8F91;border-color:#BFC2C4"><b>21:00</b><span>taken</span></div>
+    </div>
+    <div class="card" style="background:#F4F5F7;border-color:#D7D9DC">
+      <div class="c-t" style="color:#1A2733">Court 4 · 20:00–21:00</div>
+      <div class="c-s" style="color:#747679">Pay $36 at the counter</div>
+      <div class="chips">
+        <span class="chip" style="background:#157A46;color:#fff">Confirmed</span>
+        <span class="chip" style="background:#EBECED;color:#8A5200">+36 pending</span>
+      </div>
+    </div>
+    <input class="inp" style="background:#FEFFFF;border-color:#747679;color:#1A2733" value="Search venue" readonly>
+    <button class="btn" style="background:#0C1E36;color:#FEFFFF">Confirm booking</button>
+    <button class="btn" style="background:#C6F024;color:#1A2733">Book again</button>
+    <button class="btn ghost" style="background:transparent;color:#0C1E36;border:1.5px solid #0C1E36">Cancel</button>
+    <div class="tier" style="background:#0C1E36;color:#FEFFFF">
+      <div class="t-row"><span>Volley</span><span style="color:#C6F024">750 pts</span></div>
+      <div class="bar" style="background:#5A5C5E"><i style="background:#C6F024;width:62%"></i></div>
+    </div>
+  </div>
+</div>
+  <h3>Ramps</h3>
+  <div class="ramp"><div class="rname">Primary</div><div class="swr"><div class="sw" style="background:#EFF6FF"><span>50</span><em>#EFF6FF</em></div><div class="sw" style="background:#E5EDF8"><span>100</span><em>#E5EDF8</em></div><div class="sw" style="background:#C7DBF6"><span>200</span><em>#C7DBF6</em></div><div class="sw" style="background:#AEC3E1"><span>300</span><em>#AEC3E1</em></div><div class="sw" style="background:#94AAC8"><span>400</span><em>#94AAC8</em></div><div class="sw" style="background:#7A90AF"><span>500</span><em>#7A90AF</em></div><div class="sw" style="background:#627895"><span>600</span><em>#627895</em></div><div class="sw" style="background:#4A5D78"><span>700</span><em>#4A5D78</em></div><div class="sw" style="background:#33435A"><span>800</span><em>#33435A</em></div><div class="sw" style="background:#0C1E36"><span>900</span><em>#0C1E36</em></div></div></div>
+  <div class="ramp"><div class="rname">Secondary</div><div class="swr"><div class="sw" style="background:#E6F9FF"><span>50</span><em>#E6F9FF</em></div><div class="sw" style="background:#DBF0FB"><span>100</span><em>#DBF0FB</em></div><div class="sw" style="background:#ADE2FE"><span>200</span><em>#ADE2FE</em></div><div class="sw" style="background:#91CBEA"><span>300</span><em>#91CBEA</em></div><div class="sw" style="background:#73B1D2"><span>400</span><em>#73B1D2</em></div><div class="sw" style="background:#5897B8"><span>500</span><em>#5897B8</em></div><div class="sw" style="background:#3F7E9E"><span>600</span><em>#3F7E9E</em></div><div class="sw" style="background:#2E6F8E"><span>700</span><em>#2E6F8E</em></div><div class="sw" style="background:#104861"><span>800</span><em>#104861</em></div><div class="sw" style="background:#0D2D3C"><span>900</span><em>#0D2D3C</em></div></div></div>
+  <div class="ramp"><div class="rname">Accent</div><div class="swr"><div class="sw" style="background:#EEFDCD"><span>50</span><em>#EEFDCD</em></div><div class="sw" style="background:#E4F4C1"><span>100</span><em>#E4F4C1</em></div><div class="sw" style="background:#C6F024"><span>200</span><em>#C6F024</em></div><div class="sw" style="background:#AED321"><span>300</span><em>#AED321</em></div><div class="sw" style="background:#94BA00"><span>400</span><em>#94BA00</em></div><div class="sw" style="background:#7B9F00"><span>500</span><em>#7B9F00</em></div><div class="sw" style="background:#648500"><span>600</span><em>#648500</em></div><div class="sw" style="background:#4C6900"><span>700</span><em>#4C6900</em></div><div class="sw" style="background:#354D00"><span>800</span><em>#354D00</em></div><div class="sw" style="background:#213000"><span>900</span><em>#213000</em></div></div></div>
+  <div class="ramp"><div class="rname">Neutral</div><div class="swr"><div class="sw" style="background:#FEFFFF"><span>0</span><em>#FEFFFF</em></div><div class="sw" style="background:#F4F5F7"><span>50</span><em>#F4F5F7</em></div><div class="sw" style="background:#EBECED"><span>100</span><em>#EBECED</em></div><div class="sw" style="background:#D7D9DC"><span>200</span><em>#D7D9DC</em></div><div class="sw" style="background:#BFC2C4"><span>300</span><em>#BFC2C4</em></div><div class="sw" style="background:#A6A8AB"><span>400</span><em>#A6A8AB</em></div><div class="sw" style="background:#8C8F91"><span>500</span><em>#8C8F91</em></div><div class="sw" style="background:#747679"><span>600</span><em>#747679</em></div><div class="sw" style="background:#5A5C5E"><span>700</span><em>#5A5C5E</em></div><div class="sw" style="background:#404244"><span>800</span><em>#404244</em></div><div class="sw" style="background:#1A2733"><span>900</span><em>#1A2733</em></div><div class="sw" style="background:#000000"><span>1000</span><em>#000000</em></div></div></div>
+  <h3>Status</h3>
+  <div class="swr small"><div class="sw" style="background:#157A46"><span>success</span><em>#157A46</em></div><div class="sw" style="background:#8A5200"><span>warning</span><em>#8A5200</em></div><div class="sw" style="background:#B3332A"><span>error</span><em>#B3332A</em></div><div class="sw" style="background:#245C77"><span>info</span><em>#245C77</em></div></div>
+  <h3>Contrast — computed, WCAG 2.1</h3>
+  <table class='ck'><thead><tr><th>Pair</th><th>Colours</th><th>Ratio</th><th>Needs</th><th></th></tr></thead><tbody><tr class='ok'><td>Body text on background</td><td><code>#1A2733</code> on <code>#FEFFFF</code></td><td class='n'>15.17:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Secondary text on background</td><td><code>#747679</code> on <code>#FEFFFF</code></td><td class='n'>4.55:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Body text on surface card</td><td><code>#1A2733</code> on <code>#F4F5F7</code></td><td class='n'>13.93:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Primary CTA label on primary CTA</td><td><code>#FEFFFF</code> on <code>#0C1E36</code></td><td class='n'>16.71:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Second CTA label on second CTA</td><td><code>#1A2733</code> on <code>#C6F024</code></td><td class='n'>11.5:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='note'><td>Accent as TEXT on background</td><td><code>#C6F024</code> on <code>#FEFFFF</code></td><td class='n'>1.32:1</td><td class='n'>≥4.5</td><td>BY DESIGN</td></tr><tr class='ok'><td>Accent on primary — large/graphic</td><td><code>#C6F024</code> on <code>#0C1E36</code></td><td class='n'>12.67:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Large heading on background</td><td><code>#404244</code> on <code>#FEFFFF</code></td><td class='n'>10.07:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Icon on surface</td><td><code>#747679</code> on <code>#F4F5F7</code></td><td class='n'>4.18:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='note'><td>Divider (neutral-300) on surface</td><td><code>#BFC2C4</code> on <code>#F4F5F7</code></td><td class='n'>1.64:1</td><td class='n'>≥3.0</td><td>EXEMPT</td></tr><tr class='ok'><td>Control border token on surface</td><td><code>#747679</code> on <code>#F4F5F7</code></td><td class='n'>4.18:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Accent-dark as text on background</td><td><code>#354D00</code> on <code>#FEFFFF</code></td><td class='n'>9.47:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Success text on background</td><td><code>#157A46</code> on <code>#FEFFFF</code></td><td class='n'>5.37:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Error text on background</td><td><code>#B3332A</code> on <code>#FEFFFF</code></td><td class='n'>6.12:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Warning text on background</td><td><code>#8A5200</code> on <code>#FEFFFF</code></td><td class='n'>6.38:1</td><td class='n'>≥4.5</td><td>PASS</td></tr></tbody></table>
+</section><section class="col">
+  <h2>B · Softer &amp; friendlier</h2>
+  <p class="idea">Navy lifted to a mid blue, lime toned down to a usable green, neutrals warmed. Calmer and kinder to a first-timer; less obviously sporty.</p>
+  <p class="idea note">Mid blue is the action colour; the toned green is the second action and reads as text too.</p>
+  
+<div class="phone" style="background:#FFFFFF;color:#2A2724">
+  <div class="ph-head" style="background:#1D4E7A;color:#FFFFFF">
+    <div class="ph-h-row"><span class="ph-logo">Pika</span><span class="dot" style="background:#6FA81E"></span></div>
+    <div class="ph-venue">District 7 · Today</div>
+  </div>
+  <div class="ph-body">
+    <div class="datestrip">
+      <span class="d" style="background:#325F8A;color:#FFFFFF">Sat 10</span>
+      <span class="d" style="background:#ECECEB;color:#5C5C5B">Sun 11</span>
+      <span class="d" style="background:#ECECEB;color:#5C5C5B">Mon 12</span>
+    </div>
+    <div class="gridlabel" style="color:#767675">Court availability</div>
+    <div class="grid">
+      <div class="gcell" style="background:#ECECEB;color:#5C5C5B;border-color:#C2C1C1"><b>18:00</b><span>$18</span></div>
+      <div class="gcell" style="background:#EAFDD9;color:#2A2724;border-color:#83BC40"><b>19:00</b><span>$36</span></div>
+      <div class="gcell sel" style="background:#6FA81E;color:#2A2724;border-color:#528800"><b>20:00</b><span>$36</span></div>
+      <div class="gcell off" style="background:#D9D9D8;color:#8F8E8E;border-color:#C2C1C1"><b>21:00</b><span>taken</span></div>
+    </div>
+    <div class="card" style="background:#F6F5F5;border-color:#D9D9D8">
+      <div class="c-t" style="color:#2A2724">Court 4 · 20:00–21:00</div>
+      <div class="c-s" style="color:#767675">Pay $36 at the counter</div>
+      <div class="chips">
+        <span class="chip" style="background:#276942;color:#fff">Confirmed</span>
+        <span class="chip" style="background:#ECECEB;color:#8A5709">+36 pending</span>
+      </div>
+    </div>
+    <input class="inp" style="background:#FFFFFF;border-color:#8F8E8E;color:#2A2724" value="Search venue" readonly>
+    <button class="btn" style="background:#325F8A;color:#FFFFFF">Confirm booking</button>
+    <button class="btn" style="background:#6FA81E;color:#2A2724">Book again</button>
+    <button class="btn ghost" style="background:transparent;color:#325F8A;border:1.5px solid #325F8A">Cancel</button>
+    <div class="tier" style="background:#1D4E7A;color:#FFFFFF">
+      <div class="t-row"><span>Volley</span><span style="color:#6FA81E">750 pts</span></div>
+      <div class="bar" style="background:#5C5C5B"><i style="background:#6FA81E;width:62%"></i></div>
+    </div>
+  </div>
+</div>
+  <h3>Ramps</h3>
+  <div class="ramp"><div class="rname">Primary</div><div class="swr"><div class="sw" style="background:#E8F8FF"><span>50</span><em>#E8F8FF</em></div><div class="sw" style="background:#DDEEFF"><span>100</span><em>#DDEEFF</em></div><div class="sw" style="background:#B4DEFF"><span>200</span><em>#B4DEFF</em></div><div class="sw" style="background:#98C7F5"><span>300</span><em>#98C7F5</em></div><div class="sw" style="background:#7CADDD"><span>400</span><em>#7CADDD</em></div><div class="sw" style="background:#6293C3"><span>500</span><em>#6293C3</em></div><div class="sw" style="background:#4A7AA9"><span>600</span><em>#4A7AA9</em></div><div class="sw" style="background:#325F8A"><span>700</span><em>#325F8A</em></div><div class="sw" style="background:#1D4E7A"><span>800</span><em>#1D4E7A</em></div><div class="sw" style="background:#142B42"><span>900</span><em>#142B42</em></div></div></div>
+  <div class="ramp"><div class="rname">Secondary</div><div class="swr"><div class="sw" style="background:#E3FBFB"><span>50</span><em>#E3FBFB</em></div><div class="sw" style="background:#D8F2F2"><span>100</span><em>#D8F2F2</em></div><div class="sw" style="background:#A5E7E8"><span>200</span><em>#A5E7E8</em></div><div class="sw" style="background:#87D1D2"><span>300</span><em>#87D1D2</em></div><div class="sw" style="background:#68B8B9"><span>400</span><em>#68B8B9</em></div><div class="sw" style="background:#4FA3A5"><span>500</span><em>#4FA3A5</em></div><div class="sw" style="background:#2E8587"><span>600</span><em>#2E8587</em></div><div class="sw" style="background:#0F696B"><span>700</span><em>#0F696B</em></div><div class="sw" style="background:#004D4F"><span>800</span><em>#004D4F</em></div><div class="sw" style="background:#033032"><span>900</span><em>#033032</em></div></div></div>
+  <div class="ramp"><div class="rname">Accent</div><div class="swr"><div class="sw" style="background:#EAFDD9"><span>50</span><em>#EAFDD9</em></div><div class="sw" style="background:#DFF4CD"><span>100</span><em>#DFF4CD</em></div><div class="sw" style="background:#B9EC87"><span>200</span><em>#B9EC87</em></div><div class="sw" style="background:#9FD565"><span>300</span><em>#9FD565</em></div><div class="sw" style="background:#83BC40"><span>400</span><em>#83BC40</em></div><div class="sw" style="background:#6FA81E"><span>500</span><em>#6FA81E</em></div><div class="sw" style="background:#528800"><span>600</span><em>#528800</em></div><div class="sw" style="background:#3A6C00"><span>700</span><em>#3A6C00</em></div><div class="sw" style="background:#254F00"><span>800</span><em>#254F00</em></div><div class="sw" style="background:#183200"><span>900</span><em>#183200</em></div></div></div>
+  <div class="ramp"><div class="rname">Neutral</div><div class="swr"><div class="sw" style="background:#FFFFFF"><span>0</span><em>#FFFFFF</em></div><div class="sw" style="background:#F6F5F5"><span>50</span><em>#F6F5F5</em></div><div class="sw" style="background:#ECECEB"><span>100</span><em>#ECECEB</em></div><div class="sw" style="background:#D9D9D8"><span>200</span><em>#D9D9D8</em></div><div class="sw" style="background:#C2C1C1"><span>300</span><em>#C2C1C1</em></div><div class="sw" style="background:#A8A8A7"><span>400</span><em>#A8A8A7</em></div><div class="sw" style="background:#8F8E8E"><span>500</span><em>#8F8E8E</em></div><div class="sw" style="background:#767675"><span>600</span><em>#767675</em></div><div class="sw" style="background:#5C5C5B"><span>700</span><em>#5C5C5B</em></div><div class="sw" style="background:#424241"><span>800</span><em>#424241</em></div><div class="sw" style="background:#2A2724"><span>900</span><em>#2A2724</em></div><div class="sw" style="background:#000000"><span>1000</span><em>#000000</em></div></div></div>
+  <h3>Status</h3>
+  <div class="swr small"><div class="sw" style="background:#276942"><span>success</span><em>#276942</em></div><div class="sw" style="background:#8A5709"><span>warning</span><em>#8A5709</em></div><div class="sw" style="background:#A83227"><span>error</span><em>#A83227</em></div><div class="sw" style="background:#3C7E80"><span>info</span><em>#3C7E80</em></div></div>
+  <h3>Contrast — computed, WCAG 2.1</h3>
+  <table class='ck'><thead><tr><th>Pair</th><th>Colours</th><th>Ratio</th><th>Needs</th><th></th></tr></thead><tbody><tr class='ok'><td>Body text on background</td><td><code>#2A2724</code> on <code>#FFFFFF</code></td><td class='n'>14.85:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Secondary text on background</td><td><code>#767675</code> on <code>#FFFFFF</code></td><td class='n'>4.55:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Body text on surface card</td><td><code>#2A2724</code> on <code>#F6F5F5</code></td><td class='n'>13.65:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Primary CTA label on primary CTA</td><td><code>#FFFFFF</code> on <code>#325F8A</code></td><td class='n'>6.69:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Second CTA label on second CTA</td><td><code>#2A2724</code> on <code>#6FA81E</code></td><td class='n'>5.16:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='note'><td>Accent as TEXT on background</td><td><code>#6FA81E</code> on <code>#FFFFFF</code></td><td class='n'>2.88:1</td><td class='n'>≥4.5</td><td>BY DESIGN</td></tr><tr class='ok'><td>Accent on primary — large/graphic</td><td><code>#6FA81E</code> on <code>#142B42</code></td><td class='n'>5.02:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Large heading on background</td><td><code>#424241</code> on <code>#FFFFFF</code></td><td class='n'>10.06:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Icon on surface</td><td><code>#767675</code> on <code>#F6F5F5</code></td><td class='n'>4.18:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='note'><td>Divider (neutral-300) on surface</td><td><code>#C2C1C1</code> on <code>#F6F5F5</code></td><td class='n'>1.65:1</td><td class='n'>≥3.0</td><td>EXEMPT</td></tr><tr class='ok'><td>Control border token on surface</td><td><code>#8F8E8E</code> on <code>#F6F5F5</code></td><td class='n'>3.0:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Accent-dark as text on background</td><td><code>#254F00</code> on <code>#FFFFFF</code></td><td class='n'>9.56:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Success text on background</td><td><code>#276942</code> on <code>#FFFFFF</code></td><td class='n'>6.59:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Error text on background</td><td><code>#A83227</code> on <code>#FFFFFF</code></td><td class='n'>6.67:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Warning text on background</td><td><code>#8A5709</code> on <code>#FFFFFF</code></td><td class='n'>6.09:1</td><td class='n'>≥4.5</td><td>PASS</td></tr></tbody></table>
+</section><section class="col">
+  <h2>C · Bold court</h2>
+  <p class="idea">Near-black ink and lime used as a full surface, not an accent — the black + lime neon direction of the leading moodboard reference.</p>
+  <p class="idea note">Lime IS the action colour; near-black is the surface and the second action.</p>
+  
+<div class="phone" style="background:#FFFFFF;color:#101418">
+  <div class="ph-head" style="background:#101418;color:#FFFFFF">
+    <div class="ph-h-row"><span class="ph-logo">Pika</span><span class="dot" style="background:#C6F024"></span></div>
+    <div class="ph-venue">District 7 · Today</div>
+  </div>
+  <div class="ph-body">
+    <div class="datestrip">
+      <span class="d" style="background:#C6F024;color:#101418">Sat 10</span>
+      <span class="d" style="background:#ECECEC;color:#5C5C5C">Sun 11</span>
+      <span class="d" style="background:#ECECEC;color:#5C5C5C">Mon 12</span>
+    </div>
+    <div class="gridlabel" style="color:#767676">Court availability</div>
+    <div class="grid">
+      <div class="gcell" style="background:#ECECEC;color:#5C5C5C;border-color:#C1C1C2"><b>18:00</b><span>$18</span></div>
+      <div class="gcell" style="background:#EEFDCD;color:#101418;border-color:#94BA00"><b>19:00</b><span>$36</span></div>
+      <div class="gcell sel" style="background:#C6F024;color:#101418;border-color:#648500"><b>20:00</b><span>$36</span></div>
+      <div class="gcell off" style="background:#D9D9D9;color:#8E8E8F;border-color:#C1C1C2"><b>21:00</b><span>taken</span></div>
+    </div>
+    <div class="card" style="background:#F5F5F5;border-color:#D9D9D9">
+      <div class="c-t" style="color:#101418">Court 4 · 20:00–21:00</div>
+      <div class="c-s" style="color:#767676">Pay $36 at the counter</div>
+      <div class="chips">
+        <span class="chip" style="background:#117A45;color:#fff">Confirmed</span>
+        <span class="chip" style="background:#ECECEC;color:#8A5800">+36 pending</span>
+      </div>
+    </div>
+    <input class="inp" style="background:#FFFFFF;border-color:#8E8E8F;color:#101418" value="Search venue" readonly>
+    <button class="btn" style="background:#C6F024;color:#101418">Confirm booking</button>
+    <button class="btn" style="background:#101418;color:#FFFFFF">Book again</button>
+    <button class="btn ghost" style="background:transparent;color:#101418;border:1.5px solid #101418">Cancel</button>
+    <div class="tier" style="background:#101418;color:#FFFFFF">
+      <div class="t-row"><span>Volley</span><span style="color:#C6F024">750 pts</span></div>
+      <div class="bar" style="background:#5C5C5C"><i style="background:#C6F024;width:62%"></i></div>
+    </div>
+  </div>
+</div>
+  <h3>Ramps</h3>
+  <div class="ramp"><div class="rname">Primary</div><div class="swr"><div class="sw" style="background:#F3F6F8"><span>50</span><em>#F3F6F8</em></div><div class="sw" style="background:#EAECEF"><span>100</span><em>#EAECEF</em></div><div class="sw" style="background:#D4DAE0"><span>200</span><em>#D4DAE0</em></div><div class="sw" style="background:#BCC2C9"><span>300</span><em>#BCC2C9</em></div><div class="sw" style="background:#A2A9B0"><span>400</span><em>#A2A9B0</em></div><div class="sw" style="background:#898F96"><span>500</span><em>#898F96</em></div><div class="sw" style="background:#70777E"><span>600</span><em>#70777E</em></div><div class="sw" style="background:#575D63"><span>700</span><em>#575D63</em></div><div class="sw" style="background:#3E4348"><span>800</span><em>#3E4348</em></div><div class="sw" style="background:#0A0F14"><span>900</span><em>#0A0F14</em></div></div></div>
+  <div class="ramp"><div class="rname">Secondary</div><div class="swr"><div class="sw" style="background:#E5FFD1"><span>50</span><em>#E5FFD1</em></div><div class="sw" style="background:#DAF7C5"><span>100</span><em>#DAF7C5</em></div><div class="sw" style="background:#ABF16C"><span>200</span><em>#ABF16C</em></div><div class="sw" style="background:#84D80C"><span>300</span><em>#84D80C</em></div><div class="sw" style="background:#72C100"><span>400</span><em>#72C100</em></div><div class="sw" style="background:#56A700"><span>500</span><em>#56A700</em></div><div class="sw" style="background:#3E8D00"><span>600</span><em>#3E8D00</em></div><div class="sw" style="background:#257000"><span>700</span><em>#257000</em></div><div class="sw" style="background:#0F5200"><span>800</span><em>#0F5200</em></div><div class="sw" style="background:#0D3400"><span>900</span><em>#0D3400</em></div></div></div>
+  <div class="ramp"><div class="rname">Accent</div><div class="swr"><div class="sw" style="background:#EEFDCD"><span>50</span><em>#EEFDCD</em></div><div class="sw" style="background:#E4F4C1"><span>100</span><em>#E4F4C1</em></div><div class="sw" style="background:#C6F024"><span>200</span><em>#C6F024</em></div><div class="sw" style="background:#AED321"><span>300</span><em>#AED321</em></div><div class="sw" style="background:#94BA00"><span>400</span><em>#94BA00</em></div><div class="sw" style="background:#7B9F00"><span>500</span><em>#7B9F00</em></div><div class="sw" style="background:#648500"><span>600</span><em>#648500</em></div><div class="sw" style="background:#4C6900"><span>700</span><em>#4C6900</em></div><div class="sw" style="background:#354D00"><span>800</span><em>#354D00</em></div><div class="sw" style="background:#213000"><span>900</span><em>#213000</em></div></div></div>
+  <div class="ramp"><div class="rname">Neutral</div><div class="swr"><div class="sw" style="background:#FFFFFF"><span>0</span><em>#FFFFFF</em></div><div class="sw" style="background:#F5F5F5"><span>50</span><em>#F5F5F5</em></div><div class="sw" style="background:#ECECEC"><span>100</span><em>#ECECEC</em></div><div class="sw" style="background:#D9D9D9"><span>200</span><em>#D9D9D9</em></div><div class="sw" style="background:#C1C1C2"><span>300</span><em>#C1C1C2</em></div><div class="sw" style="background:#A8A8A8"><span>400</span><em>#A8A8A8</em></div><div class="sw" style="background:#8E8E8F"><span>500</span><em>#8E8E8F</em></div><div class="sw" style="background:#767676"><span>600</span><em>#767676</em></div><div class="sw" style="background:#5C5C5C"><span>700</span><em>#5C5C5C</em></div><div class="sw" style="background:#424242"><span>800</span><em>#424242</em></div><div class="sw" style="background:#101418"><span>900</span><em>#101418</em></div><div class="sw" style="background:#000000"><span>1000</span><em>#000000</em></div></div></div>
+  <h3>Status</h3>
+  <div class="swr small"><div class="sw" style="background:#117A45"><span>success</span><em>#117A45</em></div><div class="sw" style="background:#8A5800"><span>warning</span><em>#8A5800</em></div><div class="sw" style="background:#B82E1F"><span>error</span><em>#B82E1F</em></div><div class="sw" style="background:#1F6F96"><span>info</span><em>#1F6F96</em></div></div>
+  <h3>Contrast — computed, WCAG 2.1</h3>
+  <table class='ck'><thead><tr><th>Pair</th><th>Colours</th><th>Ratio</th><th>Needs</th><th></th></tr></thead><tbody><tr class='ok'><td>Body text on background</td><td><code>#101418</code> on <code>#FFFFFF</code></td><td class='n'>18.5:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Secondary text on background</td><td><code>#767676</code> on <code>#FFFFFF</code></td><td class='n'>4.54:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Body text on surface card</td><td><code>#101418</code> on <code>#F5F5F5</code></td><td class='n'>16.97:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Primary CTA label on primary CTA</td><td><code>#101418</code> on <code>#C6F024</code></td><td class='n'>14.0:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Second CTA label on second CTA</td><td><code>#FFFFFF</code> on <code>#101418</code></td><td class='n'>18.5:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='note'><td>Accent as TEXT on background</td><td><code>#C6F024</code> on <code>#FFFFFF</code></td><td class='n'>1.32:1</td><td class='n'>≥4.5</td><td>BY DESIGN</td></tr><tr class='ok'><td>Accent on primary — large/graphic</td><td><code>#C6F024</code> on <code>#0A0F14</code></td><td class='n'>14.56:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Large heading on background</td><td><code>#424242</code> on <code>#FFFFFF</code></td><td class='n'>10.05:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Icon on surface</td><td><code>#767676</code> on <code>#F5F5F5</code></td><td class='n'>4.17:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='note'><td>Divider (neutral-300) on surface</td><td><code>#C1C1C2</code> on <code>#F5F5F5</code></td><td class='n'>1.65:1</td><td class='n'>≥3.0</td><td>EXEMPT</td></tr><tr class='ok'><td>Control border token on surface</td><td><code>#8E8E8F</code> on <code>#F5F5F5</code></td><td class='n'>3.0:1</td><td class='n'>≥3.0</td><td>PASS</td></tr><tr class='ok'><td>Accent-dark as text on background</td><td><code>#354D00</code> on <code>#FFFFFF</code></td><td class='n'>9.49:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Success text on background</td><td><code>#117A45</code> on <code>#FFFFFF</code></td><td class='n'>5.39:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Error text on background</td><td><code>#B82E1F</code> on <code>#FFFFFF</code></td><td class='n'>6.09:1</td><td class='n'>≥4.5</td><td>PASS</td></tr><tr class='ok'><td>Warning text on background</td><td><code>#8A5800</code> on <code>#FFFFFF</code></td><td class='n'>6.04:1</td><td class='n'>≥4.5</td><td>PASS</td></tr></tbody></table>
+</section></div>
+</body></html>
